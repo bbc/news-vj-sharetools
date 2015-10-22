@@ -1,4 +1,4 @@
-define(['sharetools/model', 'sharetools/view'], function (SharetoolsModel, SharetoolsView) {
+define('ShareTools', ['sharetools/model', 'sharetools/view'], function (SharetoolsModel, SharetoolsView) {
     
     var SharetoolsController = function (options) {
         this.options = options;
