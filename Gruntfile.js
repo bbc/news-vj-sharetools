@@ -6,12 +6,11 @@ module.exports = function(grunt) {
             compile: {
                 options: {
                     baseUrl: './',
-                    name: './controller',
+                    name: './sharetools/controller',
                     out: './sharetools.js',
                     paths: {
                         'bootstrap': 'empty:',
                         'TemplateEngine': 'empty:',
-                        'sharetools': './',
                         'text': './node_modules/requirejs-text/text',
                     },
                     preserveLicenseComments: false
