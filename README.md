@@ -20,10 +20,15 @@ var sharetools = new ShareTools({
         email: {
             subject: 'SUPER IMPORTANT EMAIL',
             message: 'BBC News has new bespoke'
+        },
+        app: {
+            title: 'Shiny new app',
+            text: 'Hello world'
         }
     },
     shareUrl: document.referrer,
-    template: 'buttons'
+    template: 'dropdown',
+    isInTheNewsApp: false // If true dropdown template will be forced, and share window will open in news app
 });
 ```
 
@@ -40,6 +45,10 @@ sharetools.setMessages({
     email: {
         subject: 'Hello',
         message: 'New info'
+    },
+    app: {
+        title: 'New title',
+        text: 'Hello world'
     }
 });
 ```

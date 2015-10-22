@@ -40,7 +40,7 @@ define(function () {
         },
         
         setEmailMessage: function (emailMessage) {
-            if (!emailMessage || !emailMessage.subject || !emailMessage.subject) {
+            if (!emailMessage || !emailMessage.subject || !emailMessage.message) {
                 throw new Error('ShareTools: Email message requires a "subject" and a "message`"');
             }
 
@@ -49,6 +49,18 @@ define(function () {
 
         getEmailMessage: function () {
             return this.emailMessage;
+        },
+        
+        setAppMessage: function (appMessage) {
+            if (!appMessage || !appMessage.title || !appMessage.text) {
+                throw new Error('ShareTools: App message requires a "title" and a "text`"');
+            }
+
+            this.appMessage = appMessage;
+        },
+
+        getAppMessage: function () {
+            return this.appMessage;
         }
         
     };

@@ -1,8 +1,8 @@
-define('ShareTools', ['ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'bind.polyfill'], function (SharToolsModel, ShareToolsView, shareToolsNetworkConfig) {
+define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'bind.polyfill'], function (news, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
     
     var ShareToolsController = function (options) {
         this.options = options;
-        this.model = new SharToolsModel();
+        this.model = new ShareToolsModel();
         this.view = new ShareToolsView({
             model: this.model,
             controller: this,
@@ -27,6 +27,7 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkCon
             this.model.setFacebookMessage(messages.facebook);
             this.model.setTwitterMessage(messages.twitter);
             this.model.setEmailMessage(messages.email);
+            this.model.setAppMessage(messages.app);
         }, 
 
         openShareWindow: function (network) {
@@ -96,8 +97,12 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkCon
             }
 
             return networks;
-        }
+        }, 
 
+        openNewsAppShare: function () {
+            var appMessage = this.model.getAppMessage();
+            news.pubsub.emit('app-share', [appMessage]);
+        }
 
     };
 

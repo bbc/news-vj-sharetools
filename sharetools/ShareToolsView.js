@@ -6,7 +6,11 @@ define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, t
         this.model = options.model;
 
         this.label = options.config.label;
-        this.template = templates[options.config.template];
+        this.isInTheNewsApp = options.config.isInTheNewsApp;
+        
+        // If in the news app force the dropdown template
+        var templateName = (this.isInTheNewsApp) ? 'dropdown' : options.config.template;
+        this.template = templates[templateName];
         this.$holderEl = options.config.holderEl;
 
         if (!this.template) {
@@ -48,7 +52,11 @@ define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, t
         },
 
         toggleShareOverlay: function () {
-            this.$toggleOverlay.toggle();
+            if (!this.isInTheNewsApp) {
+                this.$toggleOverlay.toggle();
+            } else {
+                this.controller.openNewsAppShare();
+            }
         },
 
         networkClicked: function (event) {
