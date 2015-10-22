@@ -1,0 +1,10 @@
+{
+  "name": "bbc-vj-sharetools",
+  "version": "1.0.0",
+  "description": "BBC VJ Sharetools Module",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "requirejs-text": "^2.0.12"
+  }
+}

@@ -1,4 +1,4 @@
-    define(['lib/news_special/bootstrap', 'lib/news_special/sharetools/templates/templates', 'lib/news_special/template_engine'], function (news, templates, templateEngine) {
+define(['bootstrap', 'TemplateEngine', 'sharetools/templates/templates'], function (news, templateEngine, templates) {
 
     var SharetoolsView = function (options) {
         var SharetoolsView = this;
