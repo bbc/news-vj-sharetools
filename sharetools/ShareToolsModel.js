@@ -1,15 +1,11 @@
 define(function () {
 
-    var SharetoolsModel = function () {};
+    var ShareToolsModel = function () {};
 
-    SharetoolsModel.prototype = {
+    ShareToolsModel.prototype = {
 
         setShareUrl: function (shareUrl) {
-            if (!shareUrl) {
-                throw new Error('ShareTools: Share URL must be set');
-            }
-
-            this.shareUrl = shareUrl;
+            this.shareUrl = shareUrl || 'http://www.bbc.co.uk';
         },
 
         getShareUrl: function () {
@@ -20,6 +16,9 @@ define(function () {
             if (!facebookMessage || !facebookMessage.title) {
                 throw new Error('ShareTools: Facebook message requires a "title"');
             }
+
+            facebookMessage.description = 'Shared via BBC News';
+            facebookMessage.image = 'http://newsimg.bbc.co.uk/media/images/67373000/jpg/_67373987_09f1654a-e583-4b5f-bfc4-f05850c6d3ce.jpg';
 
             this.facebookMessage = facebookMessage;
         },
@@ -54,6 +53,6 @@ define(function () {
         
     };
 
-    return SharetoolsModel;
+    return ShareToolsModel;
         
 });

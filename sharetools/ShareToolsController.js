@@ -1,9 +1,9 @@
-define('ShareTools', ['ShareToolsModel', 'ShareToolsView'], function (SharetoolsModel, SharetoolsView) {
+define('ShareTools', ['ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'bind.polyfill'], function (SharToolsModel, ShareToolsView, shareToolsNetworkConfig) {
     
-    var SharetoolsController = function (options) {
+    var ShareToolsController = function (options) {
         this.options = options;
-        this.model = new SharetoolsModel();
-        this.view = new SharetoolsView({
+        this.model = new SharToolsModel();
+        this.view = new ShareToolsView({
             model: this.model,
             controller: this,
             config: options
@@ -12,7 +12,7 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView'], function (Sharetools
         this.init();
     };
 
-    SharetoolsController.prototype = {
+    ShareToolsController.prototype = {
 
         init: function () {
             this.setMessages(this.options.messages);
@@ -73,61 +73,7 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView'], function (Sharetools
         },
 
         getNetworkConfigList: function () {
-            var SharetoolsController = this;
-            return [
-                {
-                    'name': 'facebook',
-                    'shareEndpoint': 'https://www.facebook.com/dialog/feed',
-                    'popup': true,
-                    'staticParameters': {
-                        'app_id': '58567469885',
-                        'redirect_uri': 'http://www.bbc.co.uk/news/special/shared/vj_sharetools/fb_red_uri.html?st_cb=facebook#state=feed',
-                        'display': 'popup',
-                        'locale': 'en_GB'
-                    },
-                    'dynamicParameters': {
-                        'link': function getLink () {
-                            return SharetoolsController.model.getShareUrl();
-                        },
-                        'name': function getTitle () {
-                            return SharetoolsController.model.getFacebookMessage().title;
-                        },
-                        'description': function getDescription () {
-                            return SharetoolsController.model.getFacebookMessage().description;
-                        },
-                        'picture': function getPicture () {
-                            return SharetoolsController.model.getFacebookMessage().image;
-                        }
-                    }
-                },
-
-                {
-                    'name': 'twitter',
-                    'shareEndpoint': 'https://twitter.com/intent/tweet',
-                    'popup': true,
-                    'dynamicParameters': {
-                        'text': function getTweetText () {
-                            return SharetoolsController.model.getTwitterMessage() +
-                                ' ' + SharetoolsController.model.getShareUrl();
-                        }
-                    }
-                },
-
-                {
-                    'name': 'email',
-                    'shareEndpoint': 'mailto:',
-                    'popup': false,
-                    'dynamicParameters': {
-                        'subject': function getSubject () {
-                            return SharetoolsController.model.getEmailMessage().subject;
-                        },
-                        'body': function getMessage () {
-                            return SharetoolsController.model.getEmailMessage().message +
-                                ' ' + SharetoolsController.model.getShareUrl();
-                        }
-                    }
-                }
-            ];  
+            return shareToolsNetworkConfig(this);
         },
 
         getNetworkConfig: function (network) {
@@ -141,7 +87,7 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView'], function (Sharetools
             return null;
         },
 
-        getNetworks: function () {
+        getNetworkNames: function () {
             var networksList = this.getNetworkConfigList();
             var networks = [];
 
@@ -155,6 +101,6 @@ define('ShareTools', ['ShareToolsModel', 'ShareToolsView'], function (Sharetools
 
     };
 
-    return SharetoolsController;
+    return ShareToolsController;
         
 });

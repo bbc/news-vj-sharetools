@@ -1,7 +1,7 @@
 define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, templateEngine, templates) {
 
-    var SharetoolsView = function (options) {
-        var SharetoolsView = this;
+    var ShareToolsView = function (options) {
+        var ShareToolsView = this;
         this.controller = options.controller;
         this.model = options.model;
 
@@ -18,12 +18,12 @@ define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, t
         this.addListeners();
     };
 
-    SharetoolsView.prototype = {
+    ShareToolsView.prototype = {
 
         render: function () {
             var templateValues = {
                 label: this.label,
-                networks: this.controller.getNetworks()
+                networks: this.controller.getNetworkNames()
             };
             var generatedElMarkup = templateEngine(this.template, templateValues);
             this.$el = news.$(generatedElMarkup);
@@ -62,6 +62,6 @@ define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, t
 
     };
 
-    return SharetoolsView;
+    return ShareToolsView;
 
 });
