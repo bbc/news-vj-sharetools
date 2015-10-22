@@ -5,13 +5,14 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: './',
-                    name: './sharetools/controller',
+                    baseUrl: './sharetools',
+                    name: 'ShareTools',
                     out: './sharetools.js',
                     paths: {
                         'bootstrap': 'empty:',
                         'TemplateEngine': 'empty:',
-                        'text': './node_modules/requirejs-text/text',
+                        'ShareTools': 'ShareToolsController',
+                        'text': './../node_modules/requirejs-text/text',
                     },
                     preserveLicenseComments: false
                 }
