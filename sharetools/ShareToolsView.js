@@ -26,7 +26,7 @@ define(['bootstrap', 'template_engine', 'templates/templates'], function (news, 
         render: function () {
             var templateValues = {
                 label: this.label,
-                isInTheNewsApp: this.config.isInTheNewsApp,
+                isInTheNewsApp: this.isInTheNewsApp,
                 networks: this.controller.getNetworkNames()
             };
             var generatedElMarkup = templateEngine(this.template, templateValues);
