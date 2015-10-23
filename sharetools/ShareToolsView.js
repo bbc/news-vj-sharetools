@@ -60,7 +60,7 @@ define(['bootstrap', 'template_engine', 'templates/templates'], function (news, 
         },
 
         networkClicked: function (event) {
-            var networkClicked = $(event.currentTarget).data('network');
+            var networkClicked = news.$(event.currentTarget).data('network');
 
             this.controller.openShareWindow(networkClicked);
             this.$toggleOverlay.toggle();
