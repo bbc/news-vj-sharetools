@@ -4,7 +4,7 @@ This module is used to add share tools to VJ content.
 
 ##Example use
 
-Initialising the sharetools module.
+###Initialising the sharetools module.
 
 ```
 var sharetools = new ShareTools({
@@ -27,12 +27,23 @@ var sharetools = new ShareTools({
         }
     },
     shareUrl: document.referrer,
-    template: 'dropdown',
+    template: 'dropdown', // Optional
+    templateMarkup: '<h1><%=label%></h1>', // Optional
     isInTheNewsApp: false // If true dropdown template will be forced, and share window will open in news app
 });
 ```
+**Sending custom tempalte**
 
-Updating the share messages
+You can optionally provide templateMarkup, this is a HTML template that will be rendered by the template engine. The renderer will pass the two values:
+
+* label (string) - The label passed when initising shareTools
+* isInTheNewsApp (bool) - Wether or not we're in the news app.
+* networks (array) - An of available network names.
+
+See the examples in the templates directory.
+
+
+###Updating the share messages
 
 ```
 sharetools.setMessages({
@@ -53,7 +64,7 @@ sharetools.setMessages({
 });
 ```
 
-Updating shared url
+###Updating shared url
 
 ```
 sharetools.setShareUrl('http://bbc.co.uk/super-cool-new-url');
