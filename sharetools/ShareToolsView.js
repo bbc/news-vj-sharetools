@@ -1,4 +1,4 @@
-define(['bootstrap', 'TemplateEngine', 'templates/templates'], function (news, templateEngine, templates) {
+define(['bootstrap', 'template_engine', 'templates/templates'], function (news, templateEngine, templates) {
 
     var ShareToolsView = function (options) {
         var ShareToolsView = this;

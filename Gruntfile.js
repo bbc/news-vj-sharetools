@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                     out: './sharetools.js',
                     paths: {
                         'bootstrap': 'empty:',
-                        'TemplateEngine': 'empty:',
+                        'template_engine': 'empty:',
                         'ShareTools': 'ShareToolsController',
                         'text': './../node_modules/requirejs-text/text',
                     },
