@@ -17,8 +17,8 @@ define(function () {
                 throw new Error('ShareTools: Facebook message requires a "title"');
             }
 
-            facebookMessage.description = 'Shared via BBC News';
-            facebookMessage.image = 'http://newsimg.bbc.co.uk/media/images/67373000/jpg/_67373987_09f1654a-e583-4b5f-bfc4-f05850c6d3ce.jpg';
+            facebookMessage.description = facebookMessage.description || 'Shared via BBC News';
+            facebookMessage.image = facebookMessage.image || 'http://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png';
 
             this.facebookMessage = facebookMessage;
         },
