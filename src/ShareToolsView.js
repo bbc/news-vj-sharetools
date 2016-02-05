@@ -1,4 +1,4 @@
-define(['bootstrap', 'template_engine', 'templates/templates'], function (news, templateEngine, templates) {
+define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
 
     var ShareToolsView = function (options) {
         var ShareToolsView = this;
@@ -9,7 +9,7 @@ define(['bootstrap', 'template_engine', 'templates/templates'], function (news, 
         this.template = this.getTemplate();
         this.label = options.config.label;
         this.isInTheNewsApp = options.config.isInTheNewsApp;
-        
+
         this.$holderEl = options.config.holderEl;
 
         if (!this.template) {
@@ -39,15 +39,21 @@ define(['bootstrap', 'template_engine', 'templates/templates'], function (news, 
         getTemplate: function () {
             var template;
             if (this.config.template && this.config.templateMarkup) {
-                throw new Error('You cannot set a template and templateMarkup, please remove one');
+                throw new Error('ShareTools: You cannot set a template and templateMarkup, please remove one');
             }
-            
-            if (this.config.template) {
-                // If in the news app force the dropdown template
-                var templateName = (this.isInTheNewsApp) ? 'dropdown' : this.config.template;
-                template = templates[templateName];
-            } else {
+
+            if (this.isInTheNewsApp) {
+                template = '<div class="share ns__share-dropdown">\
+                                <div class="share__button">\
+                                    <div class="share__png_icon"></div>\
+                                    <p><%= label %></p>\
+                                    </div>\
+                                </div>\
+                            </div>';
+            } else if (this.config.templateMarkup) {
                 template = this.config.templateMarkup;
+            } else if (this.config.template) {
+                template = '';//@TODO open file ( this.config.template );
             }
 
             return template;
@@ -62,8 +68,8 @@ define(['bootstrap', 'template_engine', 'templates/templates'], function (news, 
 
         addListeners: function () {
             if(this.$shareButton && this.$toggleOverlay) {
-                this.$shareButton.on('click', this.toggleShareOverlay.bind(this)); 
-                this.$closeButton.on('click', this.toggleShareOverlay.bind(this)); 
+                this.$shareButton.on('click', this.toggleShareOverlay.bind(this));
+                this.$closeButton.on('click', this.toggleShareOverlay.bind(this));
             }
             this.$networks.on('click', this.networkClicked.bind(this));
         },

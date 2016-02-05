@@ -1,5 +1,5 @@
-define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'bind.polyfill'], function (news, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
-    
+define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'lib/bind.polyfill'], function (news, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
+
     var ShareToolsController = function (options) {
         this.options = options;
         this.model = new ShareToolsModel();
@@ -28,11 +28,11 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
             this.model.setTwitterMessage(messages.twitter);
             this.model.setEmailMessage(messages.email);
             this.model.setAppMessage(messages.app);
-        }, 
+        },
 
         openShareWindow: function (network) {
             var shareTargetUrl = this.getShareTargetUrl(network);
-            var networkConfig = this.getNetworkConfig(network); 
+            var networkConfig = this.getNetworkConfig(network);
 
             if (networkConfig.popup) {
                 window.open(shareTargetUrl, '_blank', 'width=626,height=235');
@@ -42,7 +42,7 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
         },
 
         getShareTargetUrl: function (network) {
-            var networkConfig = this.getNetworkConfig(network); 
+            var networkConfig = this.getNetworkConfig(network);
             var parameters = this.getNetworkParameters(networkConfig);
             var urlQueryString = this.buildQueryStringFrom(parameters);
 
@@ -54,7 +54,7 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
             for (var parameterName in parameters) {
                 if (parameters.hasOwnProperty(parameterName)) {
                     var parameterValue = parameters[parameterName];
-                    queryString += parameterName + '=' + encodeURIComponent(parameterValue) + '&'; 
+                    queryString += parameterName + '=' + encodeURIComponent(parameterValue) + '&';
                 }
             }
             // Remove trailing & or ?
@@ -64,7 +64,7 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
         getNetworkParameters: function (networkConfig) {
             var parameters = networkConfig.staticParameters || {};
 
-            // Get the current values of the dynamic parameters 
+            // Get the current values of the dynamic parameters
             for (var dynamicParameterName in networkConfig.dynamicParameters) {
                 if (networkConfig.dynamicParameters.hasOwnProperty(dynamicParameterName)) {
                     parameters[dynamicParameterName] = networkConfig.dynamicParameters[dynamicParameterName]();
@@ -97,7 +97,7 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
             }
 
             return networks;
-        }, 
+        },
 
         openNewsAppShare: function () {
             var appMessage = this.model.getAppMessage();
@@ -107,5 +107,5 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
     };
 
     return ShareToolsController;
-        
+
 });

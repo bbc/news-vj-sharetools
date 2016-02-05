@@ -1,0 +1,37 @@
+.ns_shareThisStoryTitle {
+    margin-top: 32px;
+    margin-bottom: 8px;
+}
+
+.ns_shareIconLink {
+    width: 44px;
+    height:32px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right:8px;
+
+    img {
+        width:100%;
+        height:100%;
+    }
+}
+
+.ns_shareIconLink:hover {
+    text-decoration: underline;
+}
+
+.ns_shareemailIcon {
+    background-color: #615f5d;
+}
+
+.ns_sharefacebookIcon {
+    background-color: #3c5a98;
+}
+
+.ns_sharetwitterIcon {
+    background-color: #47c7fa;
+}
+
+.ns_sharelinkedInIcon {
+    background-color: #0077b5;
+}

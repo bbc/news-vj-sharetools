@@ -1,0 +1,13 @@
+<div class="share ns__share">
+    <h2 class="ns_shareThisStoryTitle"><%= label %></h2>
+    <ul class="share__tools ">
+        <% for ( var i = 0; i < networks.length; i++ ) { %>
+            <li class="ns_shareIconLink ns_share<%=networks[i] %>Icon">
+                <a href="#" data-network="<%=networks[i] %>" class="share__tool--network">
+                    <!-- @TODO this needs to work for twitter, email, fb, linkedin...  -->
+                    <img src="<%= pathStatic %>/<%= vocab_dir %>/img/share-icons/email.png" alt="email share">
+                </a>
+            </li>
+        <% } %>
+    </ul>
+</div>

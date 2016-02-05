@@ -6,14 +6,13 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: './sharetools',
-                    name: 'ShareTools',
-                    out: './sharetools.js',
+                    baseUrl: './src',
+                    name:    'ShareTools',
+                    out:     './bin/sharetools.min.js',
                     paths: {
-                        'bootstrap': 'empty:',
-                        'template_engine': 'empty:',
+                        'bootstrap':  'empty:',
                         'ShareTools': 'ShareToolsController',
-                        'text': './../node_modules/requirejs-text/text',
+                        'text':       './../node_modules/requirejs-text/text',
                     },
                     preserveLicenseComments: false,
                     stubModules : ['text'],
@@ -24,15 +23,15 @@ module.exports = function(grunt) {
         'string-replace': {
             dist: {
                 files: {
-                    './': 'sharetools.js',
+                    './': 'bin/sharetools.min.js',
                 },
                 options: {
                     replacements: [{
-                        pattern: /text\!templates\//ig,
+                        pattern:     /text\!templates\//ig,
                         replacement: 'templates/'
                     },
-                    { 
-                        pattern: 'define("text",{load:function(e){throw new Error("Dynamic load not allowed: "+e)}}),',
+                    {
+                        pattern:     'define("text",{load:function(e){throw new Error("Dynamic load not allowed: "+e)}}),',
                         replacement: ''
                     }]
                 }
