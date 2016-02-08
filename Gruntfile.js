@@ -1,19 +1,37 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-string-replace');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+
+    var requirePaths =  {
+        'jquery':     'lib/jquery-2.1.5.min',
+        'ShareTools': 'ShareToolsController',
+        'text':       './../node_modules/requirejs-text/text'
+    };
 
     grunt.initConfig({
+        jasmine: {
+            all: {
+                src: 'src/*.js',
+                options: {
+                    specs: 'tests/*[sS]pec.js',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfig: {
+                            baseUrl: './src',
+                            paths: requirePaths
+                        }
+                    }
+                }
+            }
+        },
         requirejs: {
             compile: {
                 options: {
                     baseUrl: './src',
                     name:    'ShareTools',
                     out:     './bin/sharetools.min.js',
-                    paths: {
-                        'bootstrap':  'empty:',
-                        'ShareTools': 'ShareToolsController',
-                        'text':       './../node_modules/requirejs-text/text',
-                    },
+                    paths: requirePaths,
                     preserveLicenseComments: false,
                     stubModules : ['text'],
                     normalizeDirDefines: true
@@ -39,5 +57,5 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', ['requirejs', 'string-replace']);
+    grunt.registerTask('default', ['requirejs', 'jasmine:all', 'string-replace']);
 };

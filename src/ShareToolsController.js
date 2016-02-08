@@ -1,4 +1,4 @@
-define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'lib/bind.polyfill'], function (news, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
+define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'lib/bind.polyfill'], function ($, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
 
     var ShareToolsController = function (options) {
         this.options = options;
@@ -97,11 +97,6 @@ define('ShareTools', ['bootstrap', 'ShareToolsModel', 'ShareToolsView', 'ShareTo
             }
 
             return networks;
-        },
-
-        openNewsAppShare: function () {
-            var appMessage = this.model.getAppMessage();
-            news.pubsub.emit('app-share', [appMessage]);
         }
 
     };

@@ -32,15 +32,15 @@ var sharetools = new ShareTools({
     isInTheNewsApp: false // If true dropdown template will be forced, and share window will open in news app
 });
 ```
-**Sending custom tempalte**
+**Sending custom template**
 
 You can optionally provide templateMarkup, this is a HTML template that will be rendered by the template engine. The renderer will pass the two values:
 
-* label (string) - The label passed when initising shareTools
-* isInTheNewsApp (bool) - Wether or not we're in the news app.
+* label (string) - The label passed when initalising shareTools
 * networks (array) - An of available network names.
+* Overlay functionality. If you want more than just a list of share buttons - i.e. you want to be able to open/close a panel which has the share buttons on them - make sure your markup contains `.share__overlay` and `.share__overlay-close`.
 
-See the examples in the templates directory.
+See the examples in the bin/templates directory.
 
 
 ###Updating the share messages

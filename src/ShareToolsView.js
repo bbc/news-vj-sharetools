@@ -1,4 +1,4 @@
-define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
+define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
 
     var ShareToolsView = function (options) {
         var ShareToolsView = this;
@@ -8,7 +8,6 @@ define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
         this.config = options.config;
         this.template = this.getTemplate();
         this.label = options.config.label;
-        this.isInTheNewsApp = options.config.isInTheNewsApp;
 
         this.$holderEl = options.config.holderEl;
 
@@ -26,11 +25,10 @@ define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
         render: function () {
             var templateValues = {
                 label: this.label,
-                isInTheNewsApp: this.isInTheNewsApp,
                 networks: this.controller.getNetworkNames()
             };
             var generatedElMarkup = templateEngine(this.template, templateValues);
-            this.$el = news.$(generatedElMarkup);
+            this.$el = $(generatedElMarkup);
 
             this.$holderEl.empty();
             this.$holderEl.append(this.$el);
@@ -42,15 +40,7 @@ define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
                 throw new Error('ShareTools: You cannot set a template and templateMarkup, please remove one');
             }
 
-            if (this.isInTheNewsApp) {
-                template = '<div class="share ns__share-dropdown">\
-                                <div class="share__button">\
-                                    <div class="share__png_icon"></div>\
-                                    <p><%= label %></p>\
-                                    </div>\
-                                </div>\
-                            </div>';
-            } else if (this.config.templateMarkup) {
+            if (this.config.templateMarkup) {
                 template = this.config.templateMarkup;
             } else if (this.config.template) {
                 template = '';//@TODO open file ( this.config.template );
@@ -75,18 +65,14 @@ define(['bootstrap', 'lib/template_engine'], function (news, templateEngine) {
         },
 
         toggleShareOverlay: function () {
-            if (!this.isInTheNewsApp) {
-                this.$toggleOverlay.toggle();
-            } else {
-                this.controller.openNewsAppShare();
-            }
+            this.$toggleOverlay.toggle();
         },
 
         networkClicked: function (event) {
-            var networkClicked = news.$(event.currentTarget).data('network');
+            var networkClicked = $(event.currentTarget).data('network');
 
             this.controller.openShareWindow(networkClicked);
-            this.$toggleOverlay.toggle();
+            this.toggleShareOverlay();
 
             return false;
         }
