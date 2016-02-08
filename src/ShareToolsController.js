@@ -8,7 +8,6 @@ define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareTools
             controller: this,
             config: options
         });
-
         this.init();
     };
 

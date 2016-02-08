@@ -6,7 +6,7 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
         this.model = options.model;
 
         this.config = options.config;
-        this.template = this.config.template;
+        this.template = options.config.template;
         this.label = options.config.label;
 
         this.$holderEl = options.config.holderEl;

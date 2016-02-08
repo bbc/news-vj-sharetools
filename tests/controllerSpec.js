@@ -19,7 +19,7 @@ define(['ShareTools'], function (ShareToolsController) {
                 }
             },
             shareUrl: document.referrer,
-            templateMarkup: '\
+            template: '\
             <div class="share ns__share-dropdown">\
                 <div class="share__button">\
                     <div class="share__png_icon"></div>\
