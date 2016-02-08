@@ -19,6 +19,10 @@ define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareTools
             this.model.setShareUrl(this.options.shareUrl);
         },
 
+        setMessages: function (messages) {
+            this.model.setMessages(messages);
+        },
+
         openShareWindow: function (network) {
             var shareTargetUrl = this.getShareTargetUrl(network);
             var networkConfig = this.getNetworkConfig(network);

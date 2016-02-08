@@ -8,8 +8,9 @@ This module is used to add share tools to VJ content.
 
 ```
 var sharetools = new ShareTools({
-    label: 'Share this page',
     holderEl: $('.tempShareToolsHolder'),
+    label: 'Share this page',
+    shareUrl: document.referrer,
     messages: {
         twitter: 'Twitter message',
         facebook: {
@@ -22,14 +23,12 @@ var sharetools = new ShareTools({
             message: 'BBC News has new bespoke'
         }
     },
-    shareUrl: document.referrer,
-    template: 'dropdown', // Optional
-    templateMarkup: '<h1><%=label%></h1>', // Optional
+    template: '<h1><%=label%></h1>'
 });
 ```
 **Sending custom template**
 
-You can optionally provide templateMarkup, this is a HTML template that will be rendered by the template engine. The renderer will pass the two values:
+The `template` property is a HTML template that will be rendered by the template engine. The renderer will pass the two values:
 
 * label (string) - The label passed when initalising shareTools
 * networks (array) - An of available network names.
@@ -42,10 +41,10 @@ See the examples in the bin/templates directory.
 
 ```
 sharetools.setMessages({
-    twitter: 'Updated messaage',
+    twitter: 'Updated message',
     facebook: {
         title: 'Updated facebook share message',
-        description: 'Updated descritpion',
+        description: 'Updated description',
         image: 'http://bbc.co.uk/new-some-image.png'
     },
     email: {
