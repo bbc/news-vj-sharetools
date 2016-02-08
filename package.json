@@ -1,6 +1,6 @@
 {
   "name": "bbc-vj-sharetools",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "BBC VJ Sharetools Module",
   "devDependencies": {
     "grunt": "^0.4.5",
