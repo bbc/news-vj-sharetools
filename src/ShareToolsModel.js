@@ -4,6 +4,12 @@ define(function () {
 
     ShareToolsModel.prototype = {
 
+        setMessages: function (messages) {
+            this.setFacebookMessage(messages.facebook);
+            this.setTwitterMessage(messages.twitter);
+            this.setEmailMessage(messages.email);
+        },
+
         setShareUrl: function (shareUrl) {
             this.shareUrl = shareUrl || 'http://www.bbc.co.uk';
         },
@@ -11,7 +17,7 @@ define(function () {
         getShareUrl: function () {
             return this.shareUrl;
         },
-        
+
         setFacebookMessage: function (facebookMessage) {
             if (!facebookMessage || !facebookMessage.title) {
                 throw new Error('ShareTools: Facebook message requires a "title"');
@@ -26,7 +32,7 @@ define(function () {
         getFacebookMessage: function () {
             return this.facebookMessage;
         },
-        
+
         setTwitterMessage: function (twitterMessage) {
             if (!twitterMessage) {
                 throw new Error('ShareTools: Twitter message must be set');
@@ -38,10 +44,10 @@ define(function () {
         getTwitterMessage: function () {
             return this.twitterMessage;
         },
-        
+
         setEmailMessage: function (emailMessage) {
             if (!emailMessage || !emailMessage.subject || !emailMessage.message) {
-                throw new Error('ShareTools: Email message requires a "subject" and a "message`"');
+                throw new Error('ShareTools: Email message requires a "subject" and a "message"');
             }
 
             this.emailMessage = emailMessage;
@@ -49,22 +55,9 @@ define(function () {
 
         getEmailMessage: function () {
             return this.emailMessage;
-        },
-        
-        setAppMessage: function (appMessage) {
-            if (!appMessage || !appMessage.title || !appMessage.text) {
-                throw new Error('ShareTools: App message requires a "title" and a "text`"');
-            }
-
-            this.appMessage = appMessage;
-        },
-
-        getAppMessage: function () {
-            return this.appMessage;
         }
-        
+
     };
 
     return ShareToolsModel;
-        
 });

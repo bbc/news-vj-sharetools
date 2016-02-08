@@ -15,19 +15,8 @@ define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareTools
     ShareToolsController.prototype = {
 
         init: function () {
-            this.setMessages(this.options.messages);
-            this.setShareUrl(this.options.shareUrl);
-        },
-
-        setShareUrl: function (url) {
-            this.model.setShareUrl(url);
-        },
-
-        setMessages: function (messages) {
-            this.model.setFacebookMessage(messages.facebook);
-            this.model.setTwitterMessage(messages.twitter);
-            this.model.setEmailMessage(messages.email);
-            this.model.setAppMessage(messages.app);
+            this.model.setMessages(this.options.messages);
+            this.model.setShareUrl(this.options.shareUrl);
         },
 
         openShareWindow: function (network) {
