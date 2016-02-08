@@ -4,10 +4,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     var requirePaths =  {
-        'jquery':     'lib/jquery-2.1.5.min',
+        'jquery':     'empty:',
         'ShareTools': 'ShareToolsController',
         'text':       './../node_modules/requirejs-text/text'
     };
+    var jasminePaths = JSON.parse(JSON.stringify(requirePaths)); // quick dirty object clone
+    jasminePaths['jquery'] = './../tests/helpers/jquery-2.1.5.min';
 
     grunt.initConfig({
         jasmine: {
@@ -19,7 +21,7 @@ module.exports = function(grunt) {
                     templateOptions: {
                         requireConfig: {
                             baseUrl: './src',
-                            paths: requirePaths
+                            paths: jasminePaths
                         }
                     }
                 }
