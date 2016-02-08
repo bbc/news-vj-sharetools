@@ -11,10 +11,6 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
 
         this.$holderEl = options.config.holderEl;
 
-        if (!this.template) {
-            throw new Error('ShareTools: Template (' + options.template + ') not found');
-        }
-
         this.render();
         this.setElSelectors();
         this.addListeners();
@@ -46,6 +42,10 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
                 template = '';//@TODO open file ( this.config.template );
             }
 
+            if (!template) {
+                throw new Error('ShareTools: Template not found');
+            }
+
             return template;
         },
 
@@ -66,7 +66,9 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
         },
 
         toggleShareOverlay: function () {
-            this.$toggleOverlay.toggle();
+            if (this.$toggleOverlay) {
+                this.$toggleOverlay.toggle();
+            }
         },
 
         networkClicked: function (event) {
