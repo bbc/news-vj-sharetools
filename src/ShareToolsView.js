@@ -6,10 +6,14 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
         this.model = options.model;
 
         this.config = options.config;
-        this.template = this.getTemplate();
+        this.template = this.config.template;
         this.label = options.config.label;
 
         this.$holderEl = options.config.holderEl;
+
+        if (!this.template) {
+            throw new Error('ShareTools: Template not found');
+        }
 
         this.render();
         this.setElSelectors();
@@ -28,25 +32,6 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
 
             this.$holderEl.empty();
             this.$holderEl.append(this.$el);
-        },
-
-        getTemplate: function () {
-            var template;
-            if (this.config.template && this.config.templateMarkup) {
-                throw new Error('ShareTools: You cannot set a template and templateMarkup, please remove one');
-            }
-
-            if (this.config.templateMarkup) {
-                template = this.config.templateMarkup;
-            } else if (this.config.template) {
-                template = '';//@TODO open file ( this.config.template );
-            }
-
-            if (!template) {
-                throw new Error('ShareTools: Template not found');
-            }
-
-            return template;
         },
 
         setElSelectors: function () {
