@@ -57,11 +57,12 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
         },
 
         addListeners: function () {
+            var self = this;
             if(this.$shareButton && this.$toggleOverlay) {
-                this.$shareButton.on('click', this.toggleShareOverlay.bind(this));
-                this.$closeButton.on('click', this.toggleShareOverlay.bind(this));
+                this.$shareButton.on('click', self.toggleShareOverlay);
+                this.$closeButton.on('click', self.toggleShareOverlay);
             }
-            this.$networks.on('click', this.networkClicked.bind(this));
+            this.$networks.on('click', self.networkClicked);
         },
 
         toggleShareOverlay: function () {

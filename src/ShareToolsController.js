@@ -1,4 +1,4 @@
-define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig', 'lib/bind.polyfill'], function ($, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
+define('ShareTools', ['jquery', 'ShareToolsModel', 'ShareToolsView', 'ShareToolsNetworkConfig'], function ($, ShareToolsModel, ShareToolsView, shareToolsNetworkConfig) {
 
     var ShareToolsController = function (options) {
         this.options = options;
