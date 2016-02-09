@@ -24,6 +24,16 @@ var sharetools = new ShareTools({
         email: {
             subject: 'SUPER IMPORTANT EMAIL',
             message: 'BBC News has new bespoke'
+        },
+        // you can also specify custom social networks, e.g.
+        whatsapp123: {
+            shareEndpoint: 'http://example.com',
+            popup:         true,
+            properties: {
+                name: 'WhatsApp',
+                age:  '23',
+                subject: 'Testing custom networks'
+            }
         }
     },
     template: '<h1><%=label%></h1>'

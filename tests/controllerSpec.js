@@ -16,6 +16,15 @@ define(['ShareTools'], function (ShareToolsController) {
                 email: {
                     subject: 'SUPER IMPORTANT EMAIL',
                     message: 'BBC News has new bespoke'
+                },
+                custom: {
+                    shareEndpoint: 'http://example.com',
+                    popup:         true,
+                    properties: {
+                        name: 'WhatsApp',
+                        age:  '23',
+                        subject: 'Testing custom networks '
+                    }
                 }
             },
             shareUrl: document.referrer,
@@ -46,9 +55,14 @@ define(['ShareTools'], function (ShareToolsController) {
 
     describe('ShareTools Controller', function () {
 
-        it('should construct the right share url', function () {
+        it('should construct the right share url for predefined networks', function () {
             var fbShareUrl = controller.getShareTargetUrl('facebook');
             expect(fbShareUrl).toEqual('https://www.facebook.com/dialog/feed?app_id=58567469885&redirect_uri=http%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fspecial%2Fshared%2Fvj_sharetools%2Ffb_red_uri.html%3Fst_cb%3Dfacebook%23state%3Dfeed&display=popup&locale=en_GB&link=http%3A%2F%2Fwww.bbc.co.uk&name=Facebook%20share%20message&description=Further%20detailed%20information%20here&picture=http%3A%2F%2Fbbc.co.uk%2Fsome-image.png');
+        });
+
+        it('should construct the right share url for custom networks', function () {
+            var customShareUrl = controller.getShareTargetUrl('custom');
+            expect(customShareUrl).toEqual('http://example.com?name=WhatsApp&age=23&subject=Testing%20custom%20networks%20');
         });
 
     });
