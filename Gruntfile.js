@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     var requirePaths =  {
@@ -30,6 +29,7 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
+                    //optimize: 'none', // useful for debugging
                     baseUrl: './src',
                     name:    'ShareTools',
                     out:     './bin/sharetools.min.js',
@@ -39,25 +39,8 @@ module.exports = function(grunt) {
                     normalizeDirDefines: true
                 }
             }
-        },
-        'string-replace': {
-            dist: {
-                files: {
-                    './': 'bin/sharetools.min.js',
-                },
-                options: {
-                    replacements: [{
-                        pattern:     /text\!templates\//ig,
-                        replacement: 'templates/'
-                    },
-                    {
-                        pattern:     'define("text",{load:function(e){throw new Error("Dynamic load not allowed: "+e)}}),',
-                        replacement: ''
-                    }]
-                }
-            }
         }
     });
 
-    grunt.registerTask('default', ['requirejs', 'jasmine:all', 'string-replace']);
+    grunt.registerTask('default', ['requirejs', 'jasmine:all']);
 };

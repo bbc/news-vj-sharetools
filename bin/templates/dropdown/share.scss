@@ -48,7 +48,9 @@
     z-index: 99;
 }
 
-.share__overlay p {
+.share__overlay {
+
+    p {
         color:#ffffff;
         font-size:1.25em;
         line-height:45px;
@@ -94,16 +96,16 @@
                 height:24px;
                 background-repeat: no-repeat;
              }
-             &.share__tool--email span {
-                background-position: 0 -348px;
-             }
-             &.share__tool--facebook span {
-                background-position: 1px -311px;
-             }
-             &.share__tool--twitter span {
-                background-position: 1px -270px;
-             }
         }
+         .share__tool--email span {
+            background-position: 0 -348px;
+         }
+         .share__tool--facebook span {
+            background-position: 1px -311px;
+         }
+         .share__tool--twitter span {
+            background-position: 1px -270px;
+         }
     }
 
     .share__overlay-close {

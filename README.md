@@ -4,6 +4,9 @@ This module is used to add share tools to VJ content.
 
 ##Example use
 
+###Requirements
+Sharetools has a jquery dependency. Make sure 'jquery' is findable in your RequireJS paths.
+
 ###Initialising the sharetools module.
 
 ```
@@ -34,7 +37,21 @@ The `template` property is a HTML template that will be rendered by the template
 * networks (array) - An of available network names.
 * Overlay functionality. If you want more than just a list of share buttons - i.e. you want to be able to open/close a panel which has the share buttons on them - make sure your markup contains `.share__overlay` and `.share__overlay-close`.
 
-See the examples in the bin/templates directory.
+See the examples in the bin/templates directory. You can consume these as text if you have the RequireJS Text plugin, e.g.
+
+```javascript
+define(['text!templates/buttons.tmpl'], function (buttonsTemplate) {
+
+});
+```
+
+...or you can grab use the template.js files directly.
+
+```javascript
+define(['templates/template.js'], function (buttonsTemplate) {
+
+});
+```
 
 
 ###Updating the share messages
