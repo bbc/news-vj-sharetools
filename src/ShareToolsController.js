@@ -1,12 +1,14 @@
-define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (ShareToolsView, ShareToolsModelFactory) {
+define('ShareTools', ['jquery', 'ShareToolsView', 'ShareToolsModelFactory'], function ($, ShareToolsView, ShareToolsModelFactory) {
 
     var ShareToolsController = function (options) {
         this.options = options;
         this.view = new ShareToolsView({
-            controller: this,
-            config: options
+            networkNames: this.getNetworkNames(),
+            config:       options
         });
         this.setMessages(this.options.messages, this.options.shareUrl);
+        this.setElSelectors();
+        this.addListeners();
     };
 
     ShareToolsController.prototype = {
@@ -17,7 +19,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
 
         openShareWindow: function (network) {
             var shareTargetUrl = this.getShareTargetUrl(network);
-            var networkConfig = this.getNetworkConfig(network);
+            var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
 
             if (networkConfig.popup) {
                 window.open(shareTargetUrl, '_blank', 'width=626,height=235');
@@ -27,8 +29,8 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         getShareTargetUrl: function (network) {
-            var networkConfig = this.getNetworkConfig(network);
-            var parameters = this.getNetworkParameters(networkConfig);
+            var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
+            var parameters     = networkConfig.parameters();
             var urlQueryString = this.buildQueryStringFrom(parameters);
 
             return networkConfig.shareEndpoint + urlQueryString;
@@ -46,22 +48,6 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             return queryString.slice(0, -1);
         },
 
-        getNetworkParameters: function (networkConfig) {
-            var parameters = {};
-
-            // Get the current values of the dynamic parameters
-            for (var dynamicParameterName in networkConfig.parameters()) {
-                if (networkConfig.parameters().hasOwnProperty(dynamicParameterName)) {
-                    parameters[dynamicParameterName] = networkConfig.parameters()[dynamicParameterName];
-                }
-            }
-            return parameters;
-        },
-
-        getNetworkConfig: function (network) {
-            return ShareToolsModelFactory.getNetworkConfig(network);
-        },
-
         getNetworkNames: function () {
             var networks = [];
 
@@ -70,6 +56,44 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             }
 
             return networks;
+        },
+
+        setElSelectors: function () {
+            var $el = this.view.getHolderElement();
+            this.$shareButton   = $el.find('.share__button');
+            this.$toggleOverlay = $el.find('.share__overlay');
+            this.$closeButton   = $el.find('.share__overlay-close');
+            this.$networks      = $el.find('.share__tool--network');
+        },
+
+        addListeners: function () {
+            var self = this;
+            if(this.$shareButton && this.$toggleOverlay) {
+                this.$shareButton.on('click', function () {
+                    self.toggleShareOverlay();
+                });
+                this.$closeButton.on('click', function () {
+                    self.toggleShareOverlay();
+                });
+            }
+            this.$networks.on('click', function (e) {
+                self.networkClicked(e);
+            });
+        },
+
+        toggleShareOverlay: function () {
+            if (this.$toggleOverlay) {
+                this.$toggleOverlay.toggle();
+            }
+        },
+
+        networkClicked: function (event) {
+            var networkClicked = $(event.currentTarget).data('network');
+
+            this.openShareWindow(networkClicked);
+            this.toggleShareOverlay();
+
+            return false;
         }
 
     };
