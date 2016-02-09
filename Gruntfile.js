@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
-                    //optimize: 'none', // useful for debugging
+                    optimize: 'none', // useful for debugging
                     baseUrl: './src',
                     name:    'ShareTools',
                     out:     './bin/sharetools.min.js',

@@ -3,7 +3,6 @@ define(['jquery', 'lib/template_engine'], function ($, templateEngine) {
     var ShareToolsView = function (options) {
         var ShareToolsView = this;
         this.controller = options.controller;
-        this.model = options.model;
 
         this.config = options.config;
         this.template = options.config.template;
