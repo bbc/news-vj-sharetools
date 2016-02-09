@@ -17,38 +17,17 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     FacebookModel.prototype.popup = true;
 
-    FacebookModel.prototype.staticParameters = {
-        'app_id': '58567469885',
-        'redirect_uri': 'http://www.bbc.co.uk/news/special/shared/vj_sharetools/fb_red_uri.html?st_cb=facebook#state=feed',
-        'display': 'popup',
-        'locale': 'en_GB'
-    };
-
-    FacebookModel.prototype.parameters = {
-        'app_id': function getAppId () {
-            return '58567469885';
-        },
-        'redirect_uri': function getRedirectUri () {
-            return 'http://www.bbc.co.uk/news/special/shared/vj_sharetools/fb_red_uri.html?st_cb=facebook#state=feed';
-        },
-        'display': function getDisplay () {
-            return 'popup';
-        },
-        'locale': function getLocale () {
-            return 'en_GB';
-        },
-        'link': function getLink () {
-            return this.getShareUrl();
-        },
-        'name': function getTitle () {
-            return this.getMessage().title;
-        },
-        'description': function getDescription () {
-            return this.getMessage().description;
-        },
-        'picture': function getPicture () {
-            return this.getMessage().image;
-        }
+    FacebookModel.prototype.parameters = function () {
+        return {
+            'app_id':       '58567469885',
+            'redirect_uri': 'http://www.bbc.co.uk/news/special/shared/vj_sharetools/fb_red_uri.html?st_cb=facebook#state=feed',
+            'display':      'popup',
+            'locale':       'en_GB',
+            'link':         this.getShareUrl(),
+            'name':         this.getMessage().title,
+            'description':  this.getMessage().description,
+            'picture':      this.getMessage().image
+        };
     };
 
     return FacebookModel;

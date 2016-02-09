@@ -35,7 +35,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         buildQueryStringFrom: function (parameters) {
-            var queryString = '?'
+            var queryString = '?';
             for (var parameterName in parameters) {
                 if (parameters.hasOwnProperty(parameterName)) {
                     var parameterValue = parameters[parameterName];
@@ -50,9 +50,9 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             var parameters = {};
 
             // Get the current values of the dynamic parameters
-            for (var dynamicParameterName in networkConfig.parameters) {
-                if (networkConfig.parameters.hasOwnProperty(dynamicParameterName)) {
-                    parameters[dynamicParameterName] = networkConfig.parameters[dynamicParameterName]();
+            for (var dynamicParameterName in networkConfig.parameters()) {
+                if (networkConfig.parameters().hasOwnProperty(dynamicParameterName)) {
+                    parameters[dynamicParameterName] = networkConfig.parameters()[dynamicParameterName];
                 }
             }
             return parameters;

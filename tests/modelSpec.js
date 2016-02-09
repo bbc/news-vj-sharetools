@@ -1,5 +1,5 @@
 define(['ShareToolsModel'], function (ShareToolsModel) {
-
+/*
     var model;
 
     beforeEach(function() {
@@ -25,7 +25,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     });
 
-/*
+
     describe('ShareTools Model - Twitter', function () {
 
         it('should have methods for getting and setting the Twitter message', function () {

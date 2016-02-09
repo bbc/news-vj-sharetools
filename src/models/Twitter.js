@@ -14,9 +14,9 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     TwitterModel.prototype.popup = true;
 
-    TwitterModel.prototype.parameters = {
-        'text': function getTweetText () {
-            return this.getMessage() + ' ' + this.getShareUrl();
+    TwitterModel.prototype.parameters = function () {
+        return {
+            'text': this.getMessage() + ' ' + this.getShareUrl()
         }
     };
 

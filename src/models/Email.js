@@ -14,13 +14,11 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     EmailModel.prototype.popup = false;
 
-    EmailModel.prototype.parameters = {
-        'subject': function getSubject () {
-            return this.getMessage().subject;
-        },
-        'body': function getMessage () {
-            return this.getMessage().message + ' ' + this.getShareUrl();
-        }
+    EmailModel.prototype.parameters = function () {
+        return {
+            'subject': this.getMessage().subject,
+            'body':    this.getMessage().message + ' ' + this.getShareUrl()
+        };
     };
 
     return EmailModel;
