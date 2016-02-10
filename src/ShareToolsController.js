@@ -6,15 +6,20 @@ define('ShareTools', ['jquery', 'ShareToolsView', 'ShareToolsModelFactory'], fun
             networkNames: this.getNetworkNames(),
             config:       options
         });
-        this.setMessages(this.options.messages, this.options.shareUrl);
+        this.setMessages(this.options.messages);
+        this.setShareUrl(this.options.shareUrl);
         this.setElSelectors();
         this.addListeners();
     };
 
     ShareToolsController.prototype = {
 
-        setMessages: function (messages, shareUrl) {
-            ShareToolsModelFactory.setMessages(messages, shareUrl);
+        setMessages: function (messages) {
+            ShareToolsModelFactory.setMessages(messages);
+        },
+
+        setShareUrl: function (shareUrl) {
+            ShareToolsModelFactory.setShareUrl(shareUrl);
         },
 
         openShareWindow: function (network) {

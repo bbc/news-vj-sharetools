@@ -9,26 +9,50 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
 
     return {
 
-        setMessages: function (messages, shareUrl) {
-            var networkConfig,
-                networkName;
+        setMessages: function (messages) {
+            if (Object.keys(modelObjects).length === 0) {
+                this.initialiseModels(messages);
+            }
+            else {
+                var networkConfig,
+                    networkName;
 
-            for (networkName in messages) {
-                networkConfig = messages[networkName];
-
-                var modelObject = this.getModel(networkName, networkConfig);
-                this.hydrateModel(modelObject, shareUrl, networkConfig);
-                modelObjects[networkName] = modelObject;
+                for (networkName in messages) {
+                    networkConfig = messages[networkName];
+                    if (!modelObjects[networkName]) { // new network was added AFTER initialisation
+                        this.initialiseModel(networkName, networkConfig);
+                    }
+                    modelObjects[networkName].setMessage(networkConfig);
+                }
             }
         },
 
-        getModel: function (networkName, networkConfig) {
-            if (KnownModels[networkName]) {
-                return new KnownModels[networkName]();
+        setShareUrl: function (shareUrl) {
+            var modelName,
+                modelObject;
+
+            for (modelName in modelObjects) {
+                modelObject = modelObjects[modelName];
+                modelObject.setShareUrl(shareUrl);
             }
-            else {
-                return this.defineCustomNetwork(networkName, networkConfig);
+        },
+
+        initialiseModels: function (messages) {
+            for (var networkName in messages) {
+                this.initialiseModel(networkName, messages[networkName]);
             }
+        },
+
+        initialiseModel: function (networkName, networkConfig) {
+            var modelObject;
+
+            if (!KnownModels[networkName]) {
+                KnownModels[networkName] = this.defineCustomNetwork(networkName, networkConfig);
+            }
+
+            modelObject = new KnownModels[networkName]();
+            modelObject.setMessage(networkConfig);
+            modelObjects[networkName] = modelObject;
         },
 
         defineCustomNetwork: function (networkName, networkConfig) {
@@ -52,17 +76,11 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
                 return parameters;
             }
 
-            return new CustomNetwork();
-        },
-
-        hydrateModel: function (model, shareUrl, networkConfig) {
-            model.setShareUrl(shareUrl);
-            model.setMessage(networkConfig);
+            return CustomNetwork;
         },
 
         getNetworkConfig: function (name) {
             return modelObjects[name];
         }
-
     };
 });

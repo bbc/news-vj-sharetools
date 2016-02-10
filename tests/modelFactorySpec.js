@@ -21,8 +21,7 @@ define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
                         subject: 'Testing custom networks '
                     }
                 }
-            },
-            null // defaults to http://www.bbc.co.uk
+            }
         );
     });
 
@@ -65,20 +64,18 @@ define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
 
             var customNetworkWithoutShareEndpoint = function () {
                 ShareToolsModelFactory.setMessages({
-                        custom: {
-                            // deliberately missing shareEndpoint
-                            popup:         true,
-                            properties: {
-                                name: 'WhatsApp',
-                                age:  '23',
-                                subject: 'Testing custom networks'
-                            }
+                    newNetwork: {
+                        // deliberately missing shareEndpoint
+                        popup:         true,
+                        properties: {
+                            name: 'WhatsApp',
+                            age:  '23',
+                            subject: 'Testing custom networks'
                         }
-                    },
-                    null // defaults to http://www.bbc.co.uk
-                );
+                    }
+                });
             };
-            expect(customNetworkWithoutShareEndpoint).toThrowError('ShareTools: no shareEndpoint property supplied for custom network "custom"');
+            expect(customNetworkWithoutShareEndpoint).toThrowError('ShareTools: no shareEndpoint property supplied for custom network "newNetwork"');
         });
 
     });

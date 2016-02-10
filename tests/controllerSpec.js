@@ -65,6 +65,18 @@ define(['ShareTools'], function (ShareToolsController) {
             expect(customShareUrl).toEqual('http://example.com?name=WhatsApp&age=23&subject=Testing%20custom%20networks%20');
         });
 
+        it('should let me update messages at runtime', function () {
+            controller.setMessages({
+                twitter: 'This is my NEW Twitter message'
+            });
+            expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=This%20is%20my%20NEW%20Twitter%20message%20http%3A%2F%2Fwww.bbc.co.uk');
+        });
+
+        it('should let me update the share url at runtime', function () {
+            controller.setShareUrl('http://google.com');
+            expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=Twitter%20message%20http%3A%2F%2Fgoogle.com');
+        });
+
     });
 
 });
