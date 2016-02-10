@@ -58,7 +58,7 @@ define(['text!templates/buttons.tmpl'], function (buttonsTemplate) {
 ...or you can grab use the template.js files directly.
 
 ```javascript
-define(['templates/template.js'], function (buttonsTemplate) {
+define(['templates/template'], function (buttonsTemplate) {
 
 });
 ```
