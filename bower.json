@@ -1,7 +1,7 @@
 {
   "name": "bbc-vj-sharetools",
   "description": "BBC VJ Sharetools Module",
-  "main": "bin/",
+  "main": "bin/sharetools.min.js",
   "authors": [
     "fewstera <aidan.fewster@bbc.co.uk>",
     "ChrisBAshton"
@@ -13,5 +13,5 @@
     "*",
     "!bin/**"
   ],
-  "version": "1.1.0"
+  "version": "2.0.0"
 }

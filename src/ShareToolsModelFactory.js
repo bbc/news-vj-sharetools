@@ -1,6 +1,6 @@
 define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'], function (ShareToolsModel, Email, Facebook, Twitter) {
 
-    var KnownModels = {
+    var knownModels = {
         'email':    Email,
         'facebook': Facebook,
         'twitter':  Twitter
@@ -18,11 +18,13 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
                     networkName;
 
                 for (networkName in messages) {
-                    networkConfig = messages[networkName];
-                    if (!modelObjects[networkName]) { // new network was added AFTER initialisation
-                        this.initialiseModel(networkName, networkConfig);
+                    if (messages.hasOwnProperty(networkName)) {
+                        networkConfig = messages[networkName];
+                        if (!modelObjects[networkName]) { // new network was added AFTER initialisation
+                            this.initialiseModel(networkName, networkConfig);
+                        }
+                        modelObjects[networkName].setMessage(networkConfig);
                     }
-                    modelObjects[networkName].setMessage(networkConfig);
                 }
             }
         },
@@ -32,8 +34,10 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
                 modelObject;
 
             for (modelName in modelObjects) {
-                modelObject = modelObjects[modelName];
-                modelObject.setShareUrl(shareUrl);
+                if (modelObjects.hasOwnProperty(modelName)) {
+                    modelObject = modelObjects[modelName];
+                    modelObject.setShareUrl(shareUrl);
+                }
             }
         },
 
@@ -46,11 +50,11 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
         initialiseModel: function (networkName, networkConfig) {
             var modelObject;
 
-            if (!KnownModels[networkName]) {
-                KnownModels[networkName] = this.defineCustomNetwork(networkName, networkConfig);
+            if (!knownModels[networkName]) {
+                knownModels[networkName] = this.defineCustomNetwork(networkName, networkConfig);
             }
 
-            modelObject = new KnownModels[networkName]();
+            modelObject = new knownModels[networkName]();
             modelObject.setMessage(networkConfig);
             modelObjects[networkName] = modelObject;
         },
@@ -58,7 +62,7 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
         defineCustomNetwork: function (networkName, networkConfig) {
             var CustomNetwork = function () {};
             CustomNetwork.prototype = Object.create(ShareToolsModel.prototype);
-            CustomNetwork.prototype.popup         = ( networkConfig.popup === true ) || false;
+            CustomNetwork.prototype.popup         = ( networkConfig.popup === true );
             CustomNetwork.prototype.shareEndpoint = networkConfig.shareEndpoint;
 
             if (!networkConfig.shareEndpoint) {

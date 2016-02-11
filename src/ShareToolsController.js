@@ -57,7 +57,9 @@ define('ShareTools', ['jquery', 'ShareToolsView', 'ShareToolsModelFactory'], fun
             var networks = [];
 
             for (var key in this.options.messages) {
-                networks.push(key);
+                if (this.options.messages.hasOwnProperty(key)) {
+                    networks.push(key);
+                }
             }
 
             return networks;
