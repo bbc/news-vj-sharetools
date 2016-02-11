@@ -1,19 +1,20 @@
 {
   "name": "bbc-vj-sharetools",
   "description": "BBC VJ Sharetools Module",
-  "main": "sharetools.js",
+  "main": "bin/sharetools.min.js",
   "authors": [
-    "fewstera <aidan.fewster@bbc.co.uk>"
+    "fewstera <aidan.fewster@bbc.co.uk>",
+    "ChrisBAshton"
   ],
   "license": "MIT",
   "homepage": "https://github.com/bbc/news-vj-sharetools",
   "moduleType": [],
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "*",
+    "!bin/**"
   ],
-  "version": "1.0.8"
+  "version": "2.0.0",
+  "dependencies": {
+    "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git"
+  }
 }
