@@ -3,9 +3,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     var requirePaths =  {
-        'ShareTools': 'ShareToolsController',
-        'text':       './../node_modules/requirejs-text/text'
+        'template_engine': 'empty:',
+        'ShareTools':      'ShareToolsController',
+        'text':            './../node_modules/requirejs-text/text'
     };
+    var jasminePaths = JSON.parse(JSON.stringify(requirePaths)); // quick dirty object clone
+    jasminePaths['template_engine'] = '../bower_components/john-resig-template-engine-bower/template_engine';
 
     grunt.initConfig({
         jasmine: {
@@ -17,7 +20,7 @@ module.exports = function(grunt) {
                     templateOptions: {
                         requireConfig: {
                             baseUrl: './src',
-                            paths: requirePaths
+                            paths: jasminePaths
                         }
                     }
                 }

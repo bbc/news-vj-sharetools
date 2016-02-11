@@ -2,6 +2,24 @@
 
 This module is used to add share tools to VJ content.
 
+##Requirements
+* Bower
+* RequireJS/Almond
+
+##Installation & Setup
+`bower install https://github.com/bbc/news-vj-sharetools.git`
+
+news-vj-sharetools has a template engine dependency. The reason we have kept 'template_engine' OUT of the sharetools.min.js file is to keep the filesize down - you may already have a template engine in your application and it would be a shame to have to download it twice.
+
+You need to make sure `template_engine` is defined in your RequireJS paths. You can point to the one installed with Bower, i.e.:
+```
+var paths = {
+    'template_engine': 'bower_components/template_engine/template_engine'  
+};
+```
+
+...or you can point to your own.
+
 ##Example use
 
 ###Initialising the sharetools module.
@@ -59,7 +77,6 @@ define(['templates/template'], function (buttonsTemplate) {
 
 });
 ```
-
 
 ###Updating the share messages
 

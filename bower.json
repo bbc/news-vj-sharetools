@@ -13,5 +13,9 @@
     "*",
     "!bin/**"
   ],
-  "version": "2.0.0"
+  "version": "2.0.0",
+  "dependencies": {
+    "john-resig-template-engine-bower": "https://github.com/Webdapper/john-resig-template-engine-bower.git",
+    "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git"
+  }
 }

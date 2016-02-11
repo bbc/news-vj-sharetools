@@ -1,4 +1,4 @@
-define(['lib/template_engine'], function (templateEngine) {
+define(['template_engine'], function (templateEngine) {
 
     var ShareToolsView = function (options) {
         this.networks  = options.networkNames;
