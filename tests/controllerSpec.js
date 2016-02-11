@@ -5,7 +5,7 @@ define(['ShareTools'], function (ShareToolsController) {
     beforeEach(function() {
         controller = new ShareToolsController({
             label:    'Share this page',
-            holderEl: $('.tempShareToolsHolder'),
+            holderEl: '.tempShareToolsHolder',
             messages: {
                 twitter: 'Twitter message',
                 facebook: {

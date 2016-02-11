@@ -4,14 +4,11 @@ This module is used to add share tools to VJ content.
 
 ##Example use
 
-###Requirements
-Sharetools has a jquery dependency. Make sure 'jquery' is findable in your RequireJS paths.
-
 ###Initialising the sharetools module.
 
 ```
 var sharetools = new ShareTools({
-    holderEl: $('.tempShareToolsHolder'),
+    holderEl: '.tempShareToolsHolder',
     label: 'Share this page',
     shareUrl: document.referrer,
     messages: {

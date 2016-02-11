@@ -1,4 +1,4 @@
-define('ShareTools', ['jquery', 'ShareToolsView', 'ShareToolsModelFactory'], function ($, ShareToolsView, ShareToolsModelFactory) {
+define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (ShareToolsView, ShareToolsModelFactory) {
 
     var ShareToolsController = function (options) {
         this.options = options;
@@ -66,40 +66,42 @@ define('ShareTools', ['jquery', 'ShareToolsView', 'ShareToolsModelFactory'], fun
         },
 
         setElSelectors: function () {
-            var $el = this.view.getHolderElement();
-            this.$shareButton   = $el.find('.share__button');
-            this.$toggleOverlay = $el.find('.share__overlay');
-            this.$closeButton   = $el.find('.share__overlay-close');
-            this.$networks      = $el.find('.share__tool--network');
+            var holderEl = this.view.getHolderElement();
+            this.shareButton   = document.querySelector(holderEl + ' .share__button');
+            this.toggleOverlay = document.querySelector(holderEl + ' .share__overlay');
+            this.closeButton   = document.querySelector(holderEl + ' .share__overlay-close');
+            this.networks      = document.querySelectorAll(holderEl + ' .share__tool--network');
         },
 
         addListeners: function () {
             var self = this;
-            if(this.$shareButton && this.$toggleOverlay) {
-                this.$shareButton.on('click', function () {
+            if(this.shareButton && this.toggleOverlay) {
+                this.shareButton.addEventListener('click', function () {
                     self.toggleShareOverlay();
                 });
-                this.$closeButton.on('click', function () {
+                this.closeButton.addEventListener('click', function () {
                     self.toggleShareOverlay();
                 });
             }
-            this.$networks.on('click', function (e) {
-                self.networkClicked(e);
-            });
+            if (this.networks) {
+                for (var i = 0; i < this.networks.length; i++) {
+                    this.networks[i].addEventListener('click', function (e) {
+                        self.networkClicked(e);
+                    });
+                }
+            }
         },
 
         toggleShareOverlay: function () {
-            if (this.$toggleOverlay) {
-                this.$toggleOverlay.toggle();
+            if (this.toggleOverlay) {
+                this.toggleOverlay.style.display = (this.toggleOverlay.style.display === 'block') ? 'none' : 'block';
             }
         },
 
         networkClicked: function (event) {
-            var networkClicked = $(event.currentTarget).data('network');
-
+            var networkClicked = event.target.getAttribute('data-network');
             this.openShareWindow(networkClicked);
             this.toggleShareOverlay();
-
             return false;
         }
 
