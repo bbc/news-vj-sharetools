@@ -69,14 +69,13 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
                 throw new Error('ShareTools: no shareEndpoint property supplied for custom network "' + networkName + '"');
             }
 
-            var parameters = {};
-            for (var parameter in networkConfig.properties) {
-                if (networkConfig.properties.hasOwnProperty(parameter)) {
-                    parameters[parameter] = networkConfig.properties[parameter];
-                }
-            }
-
             CustomNetwork.prototype.parameters = function () {
+                var parameters = {};
+                for (var parameter in networkConfig.properties) {
+                    if (networkConfig.properties.hasOwnProperty(parameter)) {
+                        parameters[parameter] = networkConfig.properties[parameter];
+                    }
+                }
                 return parameters;
             }
 

@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         'text':            './../node_modules/requirejs-text/text'
     };
     var jasminePaths = JSON.parse(JSON.stringify(requirePaths)); // quick dirty object clone
-    jasminePaths['template_engine'] = '../bower_components/john-resig-template-engine-bower/template_engine';
+    jasminePaths['template_engine'] = '../bower_components/template_engine/template_engine';
 
     grunt.initConfig({
         jasmine: {

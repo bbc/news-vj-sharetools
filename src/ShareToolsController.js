@@ -35,6 +35,9 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
 
         getShareTargetUrl: function (network) {
             var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
+            if (!networkConfig) {
+                throw new Error('Could not find network config for network ' + network);
+            }
             var parameters     = networkConfig.parameters();
             var urlQueryString = this.buildQueryStringFrom(parameters);
 
