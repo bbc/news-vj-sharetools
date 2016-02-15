@@ -79,11 +79,15 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         addListeners: function () {
             var self = this;
             if(this.shareButton && this.toggleOverlay) {
-                this.shareButton.addEventListener('click', function () {
+                this.shareButton.addEventListener('click', function (e) {
+                    e.preventDefault();
                     self.toggleShareOverlay();
+                    return false;
                 });
-                this.closeButton.addEventListener('click', function () {
+                this.closeButton.addEventListener('click', function (e) {
+                    e.preventDefault();
                     self.toggleShareOverlay();
+                    return false;
                 });
             }
             if (this.networks) {
