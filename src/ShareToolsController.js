@@ -101,9 +101,9 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             }
         },
 
-        networkClicked: function (event) {
-            var networkClicked = event.target.getAttribute('data-network');
-            this.openShareWindow(networkClicked);
+        networkClicked: function (e) {
+            e.preventDefault();
+            this.openShareWindow(e.target.getAttribute('data-network'));
             this.toggleShareOverlay();
             return false;
         }
