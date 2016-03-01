@@ -30,7 +30,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             if (isCucumber) {
                 // required for automated testing. @TODO - come up with a better solution
                 window.locations_visited = window.locations_visited || [];
-                window.locations_visited.push(url);
+                window.locations_visited.push(shareTargetUrl);
             }
             else if (networkConfig.popup) {
                 window.open(shareTargetUrl, '_blank', 'width=626,height=235');
