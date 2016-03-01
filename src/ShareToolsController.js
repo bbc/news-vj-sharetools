@@ -23,10 +23,16 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         openShareWindow: function (network) {
+            var isCucumber     = navigator.userAgent.match(/^cucumber$/i);
             var shareTargetUrl = this.getShareTargetUrl(network);
             var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
 
-            if (networkConfig.popup) {
+            if (isCucumber) {
+                // required for automated testing. @TODO - come up with a better solution
+                window.locations_visited = window.locations_visited || [];
+                window.locations_visited.push(url);
+            }
+            else if (networkConfig.popup) {
                 window.open(shareTargetUrl, '_blank', 'width=626,height=235');
             } else {
                 window.location.href = shareTargetUrl;
