@@ -13,7 +13,7 @@
     "*",
     "!bin/**"
   ],
-  "version": "2.0.5",
+  "version": "2.0.6",
   "dependencies": {
     "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git"
   }

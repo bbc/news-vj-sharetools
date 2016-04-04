@@ -97,15 +97,22 @@
                 background-repeat: no-repeat;
              }
         }
-         .share__tool--email span {
-            background-position: 0 -348px;
-         }
-         .share__tool--facebook span {
-            background-position: 1px -311px;
-         }
-         .share__tool--twitter span {
-            background-position: 1px -270px;
-         }
+
+        .share__tool--app {
+            display: none;
+        }
+
+        .share__tool--email span {
+           background-position: 0 -348px;
+        }
+
+        .share__tool--facebook span {
+           background-position: 1px -311px;
+        }
+
+        .share__tool--twitter span {
+           background-position: 1px -270px;
+        }
     }
 
     .share__overlay-close {
