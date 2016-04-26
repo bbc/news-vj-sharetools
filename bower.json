@@ -4,7 +4,8 @@
   "main": "bin/sharetools.min.js",
   "authors": [
     "fewstera <aidan.fewster@bbc.co.uk>",
-    "ChrisBAshton"
+    "ChrisBAshton",
+    "punit-shah"
   ],
   "license": "MIT",
   "homepage": "https://github.com/bbc/news-vj-sharetools",
@@ -13,7 +14,7 @@
     "*",
     "!bin/**"
   ],
-  "version": "2.0.6",
+  "version": "2.1.0",
   "dependencies": {
     "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git"
   }
