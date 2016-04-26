@@ -14,7 +14,7 @@ news-vj-sharetools has a template engine dependency. The reason we have kept 'te
 You need to make sure `template_engine` is defined in your RequireJS paths. You can point to the one installed with Bower, i.e.:
 ```
 var paths = {
-    'template_engine': 'bower_components/template_engine/template_engine'  
+    'template_engine': 'bower_components/template_engine/template_engine'
 };
 ```
 
@@ -103,4 +103,12 @@ sharetools.setMessages({
 
 ```
 sharetools.setShareUrl('http://bbc.co.uk/super-cool-new-url');
+```
+
+###Set a callback for when the user clicks on a sharetool
+
+```
+sharetools.onShareButtonClick(function (network) {
+    console.log(network + ' sharetool clicked');
+});
 ```

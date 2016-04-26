@@ -31,8 +31,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
                 // required for automated testing. @TODO - come up with a better solution
                 window.locations_visited = window.locations_visited || [];
                 window.locations_visited.push(shareTargetUrl);
-            }
-            else if (networkConfig.popup) {
+            } else if (networkConfig.popup) {
                 window.open(shareTargetUrl, '_blank', 'width=626,height=235');
             } else {
                 window.location.href = shareTargetUrl;
@@ -111,10 +110,24 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             }
         },
 
+        onShareButtonClick: function (callback) {
+            this.shareButtonCallbacks = this.shareButtonCallbacks || [];
+            this.shareButtonCallbacks.push(callback);
+        },
+
+        resolveShareButtonCallbacks: function (network) {
+            for (var i = 0; i < this.shareButtonCallbacks.length; i++) {
+                var shareButtonCallback = this.shareButtonCallbacks[i];
+                shareButtonCallback(network);
+            }
+        },
+
         networkClicked: function (e) {
             e.preventDefault();
-            this.openShareWindow(e.target.getAttribute('data-network'));
+            var network = e.currentTarget.getAttribute('data-network');
+            this.openShareWindow(network);
             this.toggleShareOverlay();
+            this.resolveShareButtonCallbacks(network);
             return false;
         }
 

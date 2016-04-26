@@ -77,6 +77,35 @@ define(['ShareTools'], function (ShareToolsController) {
             expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=Twitter%20message%20http%3A%2F%2Fgoogle.com');
         });
 
+        it('should let me set a callback that is called when a sharetool is clicked', function () {
+            var shareClickedSpy = jasmine.createSpy('shareClickedSpy');
+            controller.onShareButtonClick(shareClickedSpy);
+
+            expect(shareClickedSpy).not.toHaveBeenCalled();
+
+            controller.resolveShareButtonCallbacks('facebook');
+
+            expect(shareClickedSpy).toHaveBeenCalled();
+            expect(shareClickedSpy).toHaveBeenCalledWith('facebook');
+        });
+
+        it('should let me set multiple callbacks that are called when a sharetool is clicked', function () {
+            var callbackOne = jasmine.createSpy('callbackOne');
+            var callbackTwo = jasmine.createSpy('callbackTwo');
+            controller.onShareButtonClick(callbackOne);
+            controller.onShareButtonClick(callbackTwo);
+
+            expect(callbackOne).not.toHaveBeenCalled();
+            expect(callbackTwo).not.toHaveBeenCalled();
+
+            controller.resolveShareButtonCallbacks('twitter');
+
+            expect(callbackOne).toHaveBeenCalled();
+            expect(callbackOne).toHaveBeenCalledWith('twitter');
+            expect(callbackTwo).toHaveBeenCalled();
+            expect(callbackTwo).toHaveBeenCalledWith('twitter');
+        });
+
     });
 
 });
