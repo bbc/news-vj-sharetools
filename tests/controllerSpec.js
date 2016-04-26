@@ -81,7 +81,7 @@ define(['ShareTools'], function (ShareToolsController) {
             var shareClickedSpy = jasmine.createSpy('shareClickedSpy');
             controller.onShareButtonClick(shareClickedSpy);
 
-            controller.satisfyShareButtonCallback('facebook');
+            controller.resolveShareButtonCallbacks('facebook');
             expect(shareClickedSpy).toHaveBeenCalled();
             expect(shareClickedSpy).toHaveBeenCalledWith('facebook');
         });

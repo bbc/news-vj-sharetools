@@ -115,7 +115,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             this.shareButtonCallbacks.push(callback);
         },
 
-        satisfyShareButtonCallback: function (network) {
+        resolveShareButtonCallbacks: function (network) {
             for (var i = 0; i < this.shareButtonCallbacks.length; i++) {
                 var shareButtonCallback = this.shareButtonCallbacks[i];
                 shareButtonCallback(network);
@@ -127,7 +127,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             var network = e.currentTarget.getAttribute('data-network');
             this.openShareWindow(network);
             this.toggleShareOverlay();
-            this.satisfyShareButtonCallback(network);
+            this.resolveShareButtonCallbacks(network);
             return false;
         }
 
