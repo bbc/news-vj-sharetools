@@ -77,6 +77,15 @@ define(['ShareTools'], function (ShareToolsController) {
             expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=Twitter%20message%20http%3A%2F%2Fgoogle.com');
         });
 
+        it('should let me set a callback to be called when a network is clicked', function () {
+            var shareClickedSpy = jasmine.createSpy('shareClickedSpy');
+            controller.onShareButtonClick(shareClickedSpy);
+
+            controller.satisfyShareButtonCallback('facebook');
+            expect(shareClickedSpy).toHaveBeenCalled();
+            expect(shareClickedSpy).toHaveBeenCalledWith('facebook');
+        });
+
     });
 
 });
