@@ -6,6 +6,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             networkNames: this.getNetworkNames(),
             config:       options
         });
+        this.shareButtonCallbacks = [];
         this.setMessages(this.options.messages);
         this.setShareUrl(this.options.shareUrl);
         this.setElSelectors();
@@ -111,7 +112,6 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         onShareButtonClick: function (callback) {
-            this.shareButtonCallbacks = this.shareButtonCallbacks || [];
             this.shareButtonCallbacks.push(callback);
         },
 
