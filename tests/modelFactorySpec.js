@@ -1,7 +1,8 @@
 define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
 
     beforeEach(function() {
-        ShareToolsModelFactory.setMessages({
+        this.factory = new ShareToolsModelFactory();
+        this.factory.setMessages({
                 twitter: 'Twitter message',
                 facebook: {
                     title: 'Facebook share message',
@@ -28,7 +29,7 @@ define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
     describe('ShareTools Model Factory', function () {
 
         it('should fetch the network config parameters', function () {
-            var fbConfig = ShareToolsModelFactory.getNetworkConfig('facebook');
+            var fbConfig = this.factory.getNetworkConfig('facebook');
 
             expect(fbConfig.shareEndpoint).toEqual('https://www.facebook.com/dialog/feed');
             expect(fbConfig.parameters().app_id).toEqual('58567469885');
@@ -42,28 +43,28 @@ define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
     describe('ShareTools Model Factory - custom networks', function () {
 
         it('should let me define my own networks', function () {
-            var customNetwork = ShareToolsModelFactory.getNetworkConfig('custom');
+            var customNetwork = this.factory.getNetworkConfig('custom');
             expect(customNetwork.parameters().age).toEqual('23');
             expect(customNetwork.popup).toBeTruthy();
         });
 
         it('should let me specify whether the shareEndpoint is opened in a popup or not', function () {
 
-            ShareToolsModelFactory.setMessages({
+            this.factory.setMessages({
                 something: {
                     shareEndpoint: 'http://example.com',
                     popup:         false
                 }
             });
 
-            var somethingNetwork = ShareToolsModelFactory.getNetworkConfig('something');
+            var somethingNetwork = this.factory.getNetworkConfig('something');
             expect(somethingNetwork.popup).toBeFalsy();
         });
 
         it('should let me define my own networks', function () {
 
             var customNetworkWithoutShareEndpoint = function () {
-                ShareToolsModelFactory.setMessages({
+                this.factory.setMessages({
                     newNetwork: {
                         // deliberately missing shareEndpoint
                         popup:         true,
@@ -74,7 +75,7 @@ define(['ShareToolsModelFactory'], function (ShareToolsModelFactory) {
                         }
                     }
                 });
-            };
+            }.bind(this);
             expect(customNetworkWithoutShareEndpoint).toThrowError('ShareTools: no shareEndpoint property supplied for custom network "newNetwork"');
         });
 

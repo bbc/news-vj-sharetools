@@ -1,16 +1,18 @@
 define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'], function (ShareToolsModel, Email, Facebook, Twitter) {
 
-    var knownModels = {
-        'email':    Email,
-        'facebook': Facebook,
-        'twitter':  Twitter
-    },
-    modelObjects = {};
+    function ShareToolsModelFactory() {
+        this.knownModels = {
+            'email':    Email,
+            'facebook': Facebook,
+            'twitter':  Twitter
+        };
+        this.modelObjects = {};
+    }
 
-    return {
+    ShareToolsModelFactory.prototype = {
 
         setMessages: function (messages) {
-            if (Object.keys(modelObjects).length === 0) {
+            if (Object.keys(this.modelObjects).length === 0) {
                 this.initialiseModels(messages);
             }
             else {
@@ -20,10 +22,10 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
                 for (networkName in messages) {
                     if (messages.hasOwnProperty(networkName)) {
                         networkConfig = messages[networkName];
-                        if (!modelObjects[networkName]) { // new network was added AFTER initialisation
+                        if (!this.modelObjects[networkName]) { // new network was added AFTER initialisation
                             this.initialiseModel(networkName, networkConfig);
                         }
-                        modelObjects[networkName].setMessage(networkConfig);
+                        this.modelObjects[networkName].setMessage(networkConfig);
                     }
                 }
             }
@@ -33,9 +35,9 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
             var modelName,
                 modelObject;
 
-            for (modelName in modelObjects) {
-                if (modelObjects.hasOwnProperty(modelName)) {
-                    modelObject = modelObjects[modelName];
+            for (modelName in this.modelObjects) {
+                if (this.modelObjects.hasOwnProperty(modelName)) {
+                    modelObject = this.modelObjects[modelName];
                     modelObject.setShareUrl(shareUrl);
                 }
             }
@@ -48,15 +50,16 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
         },
 
         initialiseModel: function (networkName, networkConfig) {
-            var modelObject;
+            var ModelClass,
+                modelObject;
 
-            if (!knownModels[networkName]) {
-                knownModels[networkName] = this.defineCustomNetwork(networkName, networkConfig);
+            if (!this.knownModels[networkName]) {
+                this.knownModels[networkName] = this.defineCustomNetwork(networkName, networkConfig);
             }
-
-            modelObject = new knownModels[networkName]();
+            ModelClass = this.knownModels[networkName]
+            modelObject = new ModelClass();
             modelObject.setMessage(networkConfig);
-            modelObjects[networkName] = modelObject;
+            this.modelObjects[networkName] = modelObject;
         },
 
         defineCustomNetwork: function (networkName, networkConfig) {
@@ -83,7 +86,12 @@ define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'],
         },
 
         getNetworkConfig: function (name) {
-            return modelObjects[name];
+            return this.modelObjects[name];
         }
+
     };
+
+
+    return ShareToolsModelFactory;
+
 });

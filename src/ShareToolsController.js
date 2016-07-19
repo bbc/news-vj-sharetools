@@ -2,6 +2,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
 
     var ShareToolsController = function (options) {
         this.options = options;
+        this.factory = new ShareToolsModelFactory();
         this.view = new ShareToolsView({
             networkNames: this.getNetworkNames(),
             config:       options
@@ -16,17 +17,17 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
     ShareToolsController.prototype = {
 
         setMessages: function (messages) {
-            ShareToolsModelFactory.setMessages(messages);
+            this.factory.setMessages(messages);
         },
 
         setShareUrl: function (shareUrl) {
-            ShareToolsModelFactory.setShareUrl(shareUrl);
+            this.factory.setShareUrl(shareUrl);
         },
 
         openShareWindow: function (network) {
             var isCucumber     = navigator.userAgent.match(/^cucumber$/i);
             var shareTargetUrl = this.getShareTargetUrl(network);
-            var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
+            var networkConfig  = this.factory.getNetworkConfig(network);
 
             if (isCucumber) {
                 // required for automated testing. @TODO - come up with a better solution
@@ -40,7 +41,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         getShareTargetUrl: function (network) {
-            var networkConfig  = ShareToolsModelFactory.getNetworkConfig(network);
+            var networkConfig  = this.factory.getNetworkConfig(network);
             if (!networkConfig) {
                 throw new Error('Could not find network config for network ' + network);
             }
