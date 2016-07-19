@@ -2,10 +2,9 @@ define(function () {
 
     return '\
         <div class="share ns__share-dropdown">\
-            <div class="share__button">\
-                <div class="share__png_icon"></div>\
-                <p><%= label %></p>\
-            </div>\
+            <button class="share__button">\
+                <%= label %>\
+            </button>\
             <span class="share__overlay">\
                 <p><%= label %></p>\
                 <ul>\
@@ -18,7 +17,7 @@ define(function () {
                         </li>\
                     <% } %>\
                 </ul>\
-                <a href="#" class="share__overlay-close" tabindex="4"></a>\
+                <a href="#" class="share__overlay-close"></a>\
              </span>\
          </div>\
     ';
