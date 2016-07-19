@@ -1,7 +1,7 @@
 define(function () {
 
     return '\
-    <div class="share ns__share">\
+    <div class="bbc-news-vj-sharetools bbc-news-vj-sharetools--buttons">\
         <ul class="share__tools ">\
             <% for ( var i = 0; i < networks.length; i++ ) { %>\
                 <li class="share__tool share__tool--<%=networks[i] %>">\
