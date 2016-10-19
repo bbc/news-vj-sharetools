@@ -1,7 +1,7 @@
 define(function () {
 
     return '\
-        <div class="share ns__share-dropdown">\
+        <div class="bbc-news-vj-sharetools bbc-news-vj-sharetools--dropdown">\
             <button class="share__button">\
                 <%= label %>\
             </button>\
