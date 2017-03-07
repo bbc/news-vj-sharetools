@@ -1,5 +1,5 @@
 {
-  "name": "news-vj-sharetools",
+  "name": "@bbc/news-vj-sharetools",
   "description": "BBC VJ Sharetools Module",
   "main": "bin/sharetools.min.js",
   "authors": [
@@ -13,7 +13,7 @@
     "*",
     "!bin/**"
   ],
-  "version": "4.1.1",
+  "version": "5.0.0",
   "repository": {
       "type": "git",
       "url": "https://github.com/bbc/news-vj-sharetools.git"
