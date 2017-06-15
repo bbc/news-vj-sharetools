@@ -1,12 +1,12 @@
-#BBC Visual Journalism ShareTools module
+# BBC Visual Journalism ShareTools module
 
 This module is used to add share tools to VJ content.
 
-##Requirements
+## Requirements
 * Bower
 * RequireJS/Almond
 
-##Installation & Setup
+## Installation & Setup
 `bower install https://github.com/bbc/news-vj-sharetools.git`
 
 news-vj-sharetools has a template engine dependency. The reason we have kept 'template_engine' OUT of the sharetools.min.js file is to keep the filesize down - you may already have a template engine in your application and it would be a shame to have to download it twice.
@@ -20,9 +20,9 @@ var paths = {
 
 ...or you can point to your own.
 
-##Example use
+## Example use
 
-###Initialising the sharetools module.
+### Initialising the sharetools module.
 
 ```
 var sharetools = new ShareTools({
@@ -78,7 +78,7 @@ define(['templates/template'], function (buttonsTemplate) {
 });
 ```
 
-###Updating the share messages
+### Updating the share messages
 
 ```
 sharetools.setMessages({
@@ -99,13 +99,13 @@ sharetools.setMessages({
 });
 ```
 
-###Updating shared url
+### Updating shared url
 
 ```
 sharetools.setShareUrl('http://bbc.co.uk/super-cool-new-url');
 ```
 
-###Set a callback for when the user clicks on a sharetool
+### Set a callback for when the user clicks on a sharetool
 
 ```
 sharetools.onShareButtonClick(function (network) {
