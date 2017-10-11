@@ -2,23 +2,16 @@
 
 This module is used to add share tools to VJ content.
 
-## Requirements
-* Bower
-* RequireJS/Almond
-
 ## Installation & Setup
-`bower install https://github.com/bbc/news-vj-sharetools.git`
+`npm install @bbc/news-vj-sharetools`
 
 news-vj-sharetools has a template engine dependency. The reason we have kept 'template_engine' OUT of the sharetools.min.js file is to keep the filesize down - you may already have a template engine in your application and it would be a shame to have to download it twice.
 
-You need to make sure `template_engine` is defined in your RequireJS paths. You can point to the one installed with Bower, i.e.:
-```
-var paths = {
-    'template_engine': 'bower_components/template_engine/template_engine'
-};
-```
+You need to make sure `template_engine` is defined in your RequireJS/Webpack paths, e.g.:
 
-...or you can point to your own.
+```
+template_engine: `${__dirname}/node_modules/template_engine/template_engine`,
+```
 
 ## Example use
 
@@ -32,9 +25,7 @@ var sharetools = new ShareTools({
     messages: {
         twitter: 'Twitter message',
         facebook: {
-            title: 'Facebook share message',
-            description: 'Further detailed information here', //Optional
-            image: 'http://bbc.co.uk/some-image.png' //Optional
+            title: 'Facebook share message'
         },
         email: {
             subject: 'SUPER IMPORTANT EMAIL',
@@ -84,9 +75,7 @@ define(['templates/template'], function (buttonsTemplate) {
 sharetools.setMessages({
     twitter: 'Updated message',
     facebook: {
-        title: 'Updated facebook share message',
-        description: 'Updated description',
-        image: 'http://bbc.co.uk/new-some-image.png'
+        title: 'Updated facebook share message'
     },
     email: {
         subject: 'Hello',
