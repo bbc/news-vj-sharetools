@@ -57,7 +57,7 @@ define(['ShareTools'], function (ShareToolsController) {
 
         it('should construct the right share url for predefined networks', function () {
             var fbShareUrl = controller.getShareTargetUrl('facebook');
-            expect(fbShareUrl).toEqual('https://www.facebook.com/dialog/feed?app_id=58567469885&redirect_uri=http%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fspecial%2Fshared%2Fvj_sharetools%2Ffb_red_uri.html%3Fst_cb%3Dfacebook%23state%3Dfeed&display=popup&locale=en_GB&link=http%3A%2F%2Fwww.bbc.co.uk&name=Facebook%20share%20message&description=Further%20detailed%20information%20here&picture=http%3A%2F%2Fbbc.co.uk%2Fsome-image.png');
+            expect(fbShareUrl).toEqual('https://www.facebook.com/dialog/share?app_id=58567469885&redirect_uri=http%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fspecial%2Fshared%2Fvj_sharetools%2Ffb_red_uri.html%3Fst_cb%3Dfacebook%23state%3Dfeed&display=popup&locale=en_GB&href=http%3A%2F%2Fwww.bbc.co.uk&quote=Facebook%20share%20message');
         });
 
         it('should construct the right share url for custom networks', function () {
