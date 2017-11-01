@@ -5,10 +5,10 @@ module.exports = function(grunt) {
     var requirePaths =  {
         'template_engine': 'empty:',
         'ShareTools':      'ShareToolsController',
-        'text':            './../node_modules/requirejs-text/text'
+        'text':            '../node_modules/requirejs-text/text'
     };
     var jasminePaths = JSON.parse(JSON.stringify(requirePaths)); // quick dirty object clone
-    jasminePaths['template_engine'] = '../bower_components/template_engine/template_engine';
+    jasminePaths['template_engine'] = '../node_modules/template_engine/template_engine';
 
     grunt.initConfig({
         jasmine: {
