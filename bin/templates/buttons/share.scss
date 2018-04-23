@@ -10,8 +10,13 @@
         height: 100%;
         width: 100%;
 
-        span {
-            display: none
+        span { // screen readers only
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
     }
 
