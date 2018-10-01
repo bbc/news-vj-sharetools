@@ -17,11 +17,11 @@ template_engine: `${__dirname}/node_modules/template_engine/template_engine`,
 
 ### Initialising the sharetools module.
 
-```
+```js
 var sharetools = new ShareTools({
     holderEl: '.tempShareToolsHolder',
     label: 'Share this page',
-    shareUrl: document.referrer,
+    shareUrl: window.location.href,
     messages: {
         twitter: 'Twitter message',
         facebook: {
