@@ -77,10 +77,10 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
 
         setElSelectors: function () {
             var holderEl = this.view.getHolderElement();
-            this.shareButton   = document.querySelector(holderEl + ' .share__button');
-            this.toggleOverlay = document.querySelector(holderEl + ' .share__overlay');
-            this.closeButton   = document.querySelector(holderEl + ' .share__overlay-close');
-            this.networks      = document.querySelectorAll(holderEl + ' .share__tool--network');
+            this.shareButton   = holderEl.querySelector('.share__button');
+            this.toggleOverlay = holderEl.querySelector('.share__overlay');
+            this.closeButton   = holderEl.querySelector('.share__overlay-close');
+            this.networks      = holderEl.querySelectorAll('.share__tool--network');
         },
 
         addListeners: function () {

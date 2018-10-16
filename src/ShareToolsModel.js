@@ -1,5 +1,5 @@
 define(function () {
-
+    console.log('Hello world! Model');
     var ShareToolsModel = function () {};
 
     ShareToolsModel.prototype = {
