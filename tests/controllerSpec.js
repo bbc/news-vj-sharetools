@@ -3,9 +3,12 @@ define(['ShareTools'], function (ShareToolsController) {
     var controller;
 
     beforeEach(function() {
+        var holderEl = document.createElement('div');
+        holderEl.className = 'tempShareToolsHolder';
+
         controller = new ShareToolsController({
             label:    'Share this page',
-            holderEl: '.tempShareToolsHolder',
+            holderEl: holderEl,
             messages: {
                 twitter: 'Twitter message',
                 facebook: {
@@ -53,6 +56,7 @@ define(['ShareTools'], function (ShareToolsController) {
         });
     });
 
+    
     describe('ShareTools Controller', function () {
 
         it('should construct the right share url for predefined networks', function () {

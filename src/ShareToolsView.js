@@ -21,10 +21,9 @@ define(['template_engine'], function (templateEngine) {
                 networks: this.networks
             };
             var generatedElMarkup = templateEngine(this.template, templateValues);
-            var holderEl = document.querySelector(this.holderEl);
 
-            if (holderEl) {
-                holderEl.innerHTML = generatedElMarkup;
+            if (this.holderEl) {
+                this.holderEl.innerHTML = generatedElMarkup;
             }
         },
 
