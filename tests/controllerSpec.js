@@ -61,7 +61,7 @@ define(['ShareTools'], function (ShareToolsController) {
 
         it('should construct the right share url for predefined networks', function () {
             var fbShareUrl = controller.getShareTargetUrl('facebook');
-            expect(fbShareUrl).toEqual('https://www.facebook.com/dialog/share?app_id=58567469885&redirect_uri=http%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fspecial%2Fshared%2Fvj_sharetools%2Ffb_red_uri.html%3Fst_cb%3Dfacebook%23state%3Dfeed&display=popup&locale=en_GB&href=http%3A%2F%2Fwww.bbc.co.uk&quote=Facebook%20share%20message');
+            expect(fbShareUrl).toEqual('https://www.facebook.com/dialog/feed?app_id=58567469885&redirect_uri=https%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fspecial%2Fshared%2Fvj_sharetools%2Ffb_red_uri.html%3Fst_cb%3Dfacebook%23state%3Dfeed&display=popup&locale=en_GB&href=https%3A%2F%2Fwww.bbc.co.uk&quote=Facebook%20share%20message');
         });
 
         it('should construct the right share url for custom networks', function () {
@@ -73,7 +73,7 @@ define(['ShareTools'], function (ShareToolsController) {
             controller.setMessages({
                 twitter: 'This is my NEW Twitter message'
             });
-            expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=This%20is%20my%20NEW%20Twitter%20message%20http%3A%2F%2Fwww.bbc.co.uk');
+            expect(controller.getShareTargetUrl('twitter')).toEqual('https://twitter.com/intent/tweet?text=This%20is%20my%20NEW%20Twitter%20message%20https%3A%2F%2Fwww.bbc.co.uk');
         });
 
         it('should let me update the share url at runtime', function () {
