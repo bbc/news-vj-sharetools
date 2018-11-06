@@ -5,7 +5,7 @@ define(function () {
     ShareToolsModel.prototype = {
 
         setShareUrl: function (shareUrl) {
-            this.shareUrl = shareUrl || 'http://www.bbc.co.uk';
+            this.shareUrl = shareUrl || 'https://www.bbc.co.uk';
         },
 
         getShareUrl: function () {
