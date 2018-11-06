@@ -1,10 +1,11 @@
-define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter'], function (ShareToolsModel, Email, Facebook, Twitter) {
+define(['ShareToolsModel', 'models/Email', 'models/Facebook', 'models/Twitter', 'models/Messenger'], function (ShareToolsModel, Email, Facebook, Twitter, Messenger) {
 
     function ShareToolsModelFactory() {
         this.knownModels = {
-            'email':    Email,
+            'email': Email,
             'facebook': Facebook,
-            'twitter':  Twitter
+            'twitter': Twitter,
+            'messenger': Messenger
         };
         this.modelObjects = {};
     }
