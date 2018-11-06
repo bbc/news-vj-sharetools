@@ -34,9 +34,12 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
                 window.locations_visited = window.locations_visited || [];
                 window.locations_visited.push(shareTargetUrl);
             } else if (networkConfig.popup) {
-                window.open(shareTargetUrl, '_blank', 'width=626,height=235');
+                var windowOpener = window.open(shareTargetUrl, '_blank', 'width=626,height=235');
+                windowOpener.opener = null;
+                windowOpener.location = shareTargetUrl;
             } else {
-                window.location.href = shareTargetUrl;
+                var windowOpener = window.location.href = shareTargetUrl;
+                windowOpener.opener = null;
             }
         },
 
