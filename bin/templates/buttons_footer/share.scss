@@ -23,38 +23,37 @@
 
     .share__tool.share__tool--email {
         background-color: #615f5d;
-        background-position: -44px -108px;
+        background-position: 0 -108px;
     }
 
     .share__tool--email:hover {
-        background-position: 0 -108px;
+        background-position: -44px -108px;
     }
 
     .share__tool.share__tool--facebook {
         background-color: #3b5998;
-        background-position: -44px 0;
+        background-position: 0 0;
     }
 
     .share__tool--facebook:hover {
-        background-position: 0 0;
+        background-position: -44px 0;
     }
 
     .share__tool.share__tool--twitter {
         background-color: #1da1f2;
-        background-position: -44px -54px;
-    }
-
-    .share__tool--twitter:hover {
         background-position: 0 -54px;
     }
 
+    .share__tool--twitter:hover {
+        background-position: -44px -54px;
+    }
+
     .share__tool.share__tool--messenger {
-        background-color: #0084ff;
-        background-position: -44px -162px;
+        background-position: 0 -162px;
     }
 
     .share__tool--messenger:hover {
-        background-position: 0 -162px;
+        background-position: -44px -162px;
     }
 
     .share__tool.share__tool--whatsapp {
@@ -65,11 +64,11 @@
         .share__tool.share__tool--whatsapp {
             display: inline-block;
             background-color: #1bd741;
-            background-position: -44px -216px;
+            background-position: 0 -216px;
         }
 
         .share__tool--whatsapp:hover {
-            background-position: 0 -216px;
+            background-position: -44px -216px;
         }
     }
 
