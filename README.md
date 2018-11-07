@@ -19,7 +19,7 @@ template_engine: `${__dirname}/node_modules/template_engine/template_engine`,
 
 ```js
 var sharetools = new ShareTools({
-    holderEl: '.tempShareToolsHolder',
+    holderEl: document.querySelector('.tempShareToolsHolder'),
     label: 'Share this page',
     shareUrl: window.location.href,
     messages: {
