@@ -16,7 +16,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
         });
 
         it('should get and set the share URL as expected', function () {
-            var shareUrl = 'http://bbc.co.uk/news';
+            var shareUrl = 'https://bbc.co.uk/news';
             model.setShareUrl(shareUrl);
             expect(model.getShareUrl()).toEqual(shareUrl);
         });

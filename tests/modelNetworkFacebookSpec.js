@@ -36,7 +36,7 @@ define(['models/Facebook'], function (FacebookModel) {
             model.setMessage(message);
             expect(model.getMessage().title).toEqual(message.title);
             expect(model.getMessage().description).toEqual('Shared via BBC News');
-            expect(model.getMessage().image).toEqual('http://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png');
+            expect(model.getMessage().image).toEqual('https://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png');
         });
 
         it('should allow me to specify the Facebook message description and image', function () {
