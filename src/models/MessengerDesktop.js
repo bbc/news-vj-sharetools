@@ -20,7 +20,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
             'redirect_uri': 'https://www.bbc.co.uk/news/special/shared/vj_sharetools/fb_red_uri.html?st_cb=facebook#state=feed',
             'display': 'popup',
             'locale': 'en_GB',
-            'link':         this.getShareUrl(),
+            'link': this.getShareUrl(),
             'text': this.getMessage().title
         }
     };
