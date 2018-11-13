@@ -52,11 +52,15 @@
         background-position: 0 -162px;
     }
 
-    .share__tool--messenger:hover {
+    .share__tool.share__tool--messenger_desktop {
+        background-position: 0 -162px;
+    }
+
+    .share__tool--messenger_desktop:hover, .share__tool--messenger:hover {
         background-position: -44px -162px;
     }
 
-    .share__tool.share__tool--whatsapp {
+    .share__tool.share__tool--whatsapp, .share__tool.share__tool--messenger {
         display: none;
     }
 
@@ -69,6 +73,14 @@
 
         .share__tool--whatsapp:hover {
             background-position: -44px -216px;
+        }
+
+        .share__tool.share__tool--messenger {
+            display: inline-block;
+        }
+
+        .share__tool.share__tool--messenger_desktop {
+            display: none;
         }
     }
 

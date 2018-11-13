@@ -48,16 +48,16 @@
         background-position: 0 -54px;
     }
 
-    .share__tool.share__tool--messenger {
+    .share__tool.share__tool--messenger, .share__tool.share__tool--messenger_desktop {
         background-color: #0084ff;
         background-position: -44px -162px;
     }
 
-    .share__tool--messenger:hover {
+    .share__tool--messenger:hover, .share__tool--messenger_desktop:hover {
         background-position: 0 -162px;
     }
 
-    .share__tool.share__tool--whatsapp {
+    .share__tool.share__tool--whatsapp, .share__tool.share__tool--messenger {
         display: none;
     }
 
@@ -70,6 +70,14 @@
 
         .share__tool--whatsapp:hover {
             background-position: 0 -216px;
+        }
+
+        .share__tool.share__tool--messenger {
+            display: inline-block;
+        }
+
+        .share__tool.share__tool--messenger_desktop {
+            display: none;
         }
     }
 
