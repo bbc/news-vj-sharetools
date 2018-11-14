@@ -11,6 +11,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         this.setMessages(this.options.messages);
         this.setShareUrl(this.options.shareUrl);
         this.setElSelectors();
+        this.changeUrls();
         this.addListeners();
     };
 
@@ -38,8 +39,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
                 windowOpener.opener = null;
                 windowOpener.location = shareTargetUrl;
             } else {
-                var windowOpener = window.location.href = shareTargetUrl;
-                windowOpener.opener = null;
+                return true;
             }
         },
 
@@ -109,6 +109,17 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
             }
         },
 
+        changeUrls: function() {
+            for (var i = 0; i < this.networks.length; i++) {
+                var network = this.networks[i].getAttribute('data-network');
+                var _popup = this.factory.getNetworkConfig(network).popup;
+                if (_popup !== true) {
+                    this.networks[i].href = this.getShareTargetUrl(network);
+                    this.networks[i].rel = 'noopener';
+                }
+            }
+        },
+
         toggleShareOverlay: function () {
             if (this.toggleOverlay) {
                 this.toggleOverlay.style.display = (this.toggleOverlay.style.display === 'block') ? 'none' : 'block';
@@ -127,12 +138,18 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
         },
 
         networkClicked: function (e) {
-            e.preventDefault();
             var network = e.currentTarget.getAttribute('data-network');
-            this.openShareWindow(network);
+            var _popup = this.factory.getNetworkConfig(network).popup;
+            if (_popup === true) {
+                e.preventDefault();
+                this.openShareWindow(network);
+                this.toggleShareOverlay();
+                this.resolveShareButtonCallbacks(network);
+                return false;
+            }
             this.toggleShareOverlay();
             this.resolveShareButtonCallbacks(network);
-            return false;
+            return true;
         }
 
     };
