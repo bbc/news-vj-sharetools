@@ -12,7 +12,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     MessengerModel.prototype.shareEndpoint = 'fb-messenger://share';
 
-    MessengerModel.prototype.popup = true;
+    MessengerModel.prototype.popup = false;
 
     MessengerModel.prototype.parameters = function () {
         return {

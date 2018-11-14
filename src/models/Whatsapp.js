@@ -12,11 +12,10 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
 
     WhatsappModel.prototype.shareEndpoint = 'whatsapp://send';
 
-    WhatsappModel.prototype.popup = true;
+    WhatsappModel.prototype.popup = false;
 
     WhatsappModel.prototype.parameters = function () {
         return {
-            'link':         this.getShareUrl(),
             'text': this.getMessage().title + ' - ' + this.getShareUrl()
         }
     };
