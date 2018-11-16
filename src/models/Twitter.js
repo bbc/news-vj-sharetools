@@ -8,6 +8,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
         if (!message) {
             throw new Error('ShareTools: Twitter message must be set');
         }
+        return message;
     };
 
     TwitterModel.prototype.shareEndpoint = 'https://twitter.com/intent/tweet';

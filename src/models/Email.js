@@ -8,6 +8,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
         if (!message || !message.subject || !message.message) {
             throw new Error('ShareTools: Email message requires a "subject" and a "message"');
         }
+        return message;
     };
 
     EmailModel.prototype.shareEndpoint = 'mailto:';

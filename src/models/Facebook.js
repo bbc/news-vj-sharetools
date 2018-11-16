@@ -5,15 +5,15 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
     FacebookModel.prototype = Object.create(ShareToolsModel.prototype);
 
     FacebookModel.prototype.validate = function (message) {
-        if (!message || !message.title) {
-            throw new Error('ShareTools: Facebook message requires a "title"');
+        if (!message) {
+            throw new Error('ShareTools: Facebook message must be set');
         }
+        message.share_or_feed = message.share_or_feed || 'feed';
 
-        message.description = message.description || 'Shared via BBC News';
-        message.image = message.image || 'https://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png';
+        this.shareEndpoint = 'https://www.facebook.com/dialog/' + message.share_or_feed;
+
+        return message;
     };
-
-    FacebookModel.prototype.shareEndpoint = 'https://www.facebook.com/dialog/feed';
 
     FacebookModel.prototype.popup = true;
 
