@@ -8,6 +8,8 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
         if (!message) {
             throw new Error('ShareTools: Whatsapp message must be set');
         }
+        message.title = message.title || '';
+        return message;
     };
 
     WhatsappModel.prototype.shareEndpoint = 'whatsapp://send';

@@ -115,7 +115,7 @@ define('ShareTools', ['ShareToolsView', 'ShareToolsModelFactory'], function (Sha
                 var _popup = this.factory.getNetworkConfig(network).popup;
                 if (_popup !== true) {
                     this.networks[i].href = this.getShareTargetUrl(network);
-                    this.networks[i].rel = 'noopener';
+                    if (this.networks[i].href.indexOf('mailto') === -1) this.networks[i].rel = 'noopener';
                 }
             }
         },

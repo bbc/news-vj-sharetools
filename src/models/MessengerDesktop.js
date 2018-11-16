@@ -8,6 +8,7 @@ define(['ShareToolsModel'], function (ShareToolsModel) {
         if (!message) {
             throw new Error('ShareTools: MessengerDesktop message must be set');
         }
+        return message;
     };
 
     MessengerDesktopModel.prototype.shareEndpoint = 'https://www.facebook.com/dialog/feed';

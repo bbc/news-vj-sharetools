@@ -14,7 +14,7 @@ define(function () {
 
         setMessage: function (message) {
             if (this.validate) {
-                this.validate(message);
+                message = this.validate(message);
             }
             this.message = message;
         },
