@@ -22,10 +22,12 @@
     "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git#1.0.1"
   },
   "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-contrib-requirejs": "0.4.4",
-    "requirejs-text": "2.0.12",
+    "grunt": "^1.0.4",
     "grunt-contrib-jasmine": "1.0.3",
-    "grunt-template-jasmine-requirejs": "0.2.3"
+    "grunt-contrib-requirejs": "0.4.4",
+    "grunt-template-jasmine-requirejs": "0.2.3",
+    "install": "^0.12.2",
+    "npm": "^6.9.0",
+    "requirejs-text": "2.0.12"
   }
 }
