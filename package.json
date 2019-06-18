@@ -13,17 +13,17 @@
     "*",
     "!bin/**"
   ],
-  "version": "5.2.4",
+  "version": "5.2.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/bbc/news-vj-sharetools.git"
   },
   "dependencies": {
-    "template_engine": "https://github.com/Webdapper/john-resig-template-engine-bower.git#1.0.1"
+    "template_engine": "git+https://github.com/Webdapper/john-resig-template-engine-bower.git#1.0.1"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
-    "grunt-contrib-jasmine": "1.0.3",
+    "grunt-contrib-jasmine": "^2.0.3",
     "grunt-contrib-requirejs": "0.4.4",
     "grunt-template-jasmine-requirejs": "0.2.3",
     "install": "^0.12.2",
