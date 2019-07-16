@@ -13,7 +13,7 @@
     "*",
     "!bin/**"
   ],
-  "version": "5.2.5",
+  "version": "5.2.6",
   "repository": {
     "type": "git",
     "url": "https://github.com/bbc/news-vj-sharetools.git"
@@ -24,10 +24,10 @@
   "devDependencies": {
     "grunt": "^1.0.4",
     "grunt-contrib-jasmine": "^2.0.3",
-    "grunt-contrib-requirejs": "0.4.4",
+    "grunt-contrib-requirejs": "1.0.0",
     "grunt-template-jasmine-requirejs": "0.2.3",
-    "install": "^0.12.2",
-    "npm": "^6.9.0",
-    "requirejs-text": "2.0.12"
+    "install": "^0.13.0",
+    "npm": "^6.10.1",
+    "requirejs-text": "2.0.15"
   }
 }
