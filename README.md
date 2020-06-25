@@ -1,5 +1,7 @@
 # BBC Visual Journalism ShareTools module
 
+## This Sharetools component is no longer supported
+
 This module is used to add share tools to VJ content.
 
 ## Installation & Setup
