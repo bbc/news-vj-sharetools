@@ -27,7 +27,7 @@
     "grunt-contrib-requirejs": "1.0.0",
     "grunt-template-jasmine-requirejs": "0.2.3",
     "install": "^0.13.0",
-    "npm": "^6.14.5",
+    "npm": "^6.14.6",
     "requirejs-text": "2.0.15"
   }
 }
