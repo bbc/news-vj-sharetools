@@ -1,5 +1,6 @@
 define(function () {
 
+    console.warn('Sharetools no longer supported');
     var ShareToolsModel = function () {};
 
     ShareToolsModel.prototype = {
